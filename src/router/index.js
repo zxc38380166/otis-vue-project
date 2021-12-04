@@ -65,12 +65,8 @@ const routes = [
       children:
       [
          {
-            path: 'cart',
-            component:  ()=>import('../views/UCart.vue')
-         },
-         {
-            path: 'checkout',
-            component:  ()=>import('../views/UCheckOut.vue')
+            path: 'Uproducts',
+            component:  ()=>import('../views/Uproducts.vue')
          }
       ]
    }
