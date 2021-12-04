@@ -44,7 +44,7 @@
         },
     }
 </script>
-<style>
+<style lang="scss">
     .dashbord {
         width: 100vw;
         height: 100vh;
@@ -61,7 +61,6 @@
     .search {
         color: darkred;
     }
-
     .products {
         width: 80%;
         height: 100%;
