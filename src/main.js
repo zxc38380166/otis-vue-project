@@ -3,11 +3,10 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import App from './App.vue'
 import router from './router'
-import   'bootstrap/dist/css/bootstrap.css'
-
-import   'bootstrap/dist/js/bootstrap.js'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap.js'
 import  Loading  from  'vue3-loading-overlay' ;     // 引入讀取套件
-import  'vue3-loading-overlay/dist/vue3-loading-overlay.css' ; // 引入讀取套件規則
+import 'vue3-loading-overlay/dist/vue3-loading-overlay.css' ; // 引入讀取套件規則
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import {currency,date} from './methods/filters'     // 引入千分號及時間換算方法
 import {Form,Field,ErrorMessage,defineRule,configure}from 'vee-validate';  //defineRule為定義規則名稱 configure為設定全域規則

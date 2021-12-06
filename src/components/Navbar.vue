@@ -5,7 +5,7 @@
             <router-link class="navbar-brand" href="#" to="/User/cart">切換至用戶端</router-link>
          </a>
          <a class="navbar-brand" href="#">
-            <router-link class="navbar-brand" href="#" to="/UBord/cart">切換至用戶端(work)</router-link>
+            <router-link class="navbar-brand" href="#" to="/UBord/Uproducts">切換至用戶端(work)</router-link>
          </a>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

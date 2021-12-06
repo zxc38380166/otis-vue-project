@@ -218,7 +218,7 @@
             this.status.load = id // 打開 disabled 
             this.$http.post(api, {
                data: cart // 傳送給後端的資料
-            }).then((res) => {
+            }).then( (res) => {
                this.status.load = '' // 關閉 disabled
                this.getCart()
             })

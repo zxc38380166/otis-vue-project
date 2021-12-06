@@ -66,11 +66,7 @@
          OpenDelModal,
          Page,
       },
-      inject: [   // 引用provide , 帶入mitt套件
-         'emitter'
-      ],
       methods: {
-         
          getproducts( page=1 ) {    // 若沒有使用emit從子元件重入頁碼 , 則預設頁碼為1
             this.isLoading = true; // 取得資料前打開讀取狀態
             const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products?page=${page}`; 
@@ -92,8 +88,8 @@
                   ...item
                };
             }
-            const productsComponent = this.$refs.ProductsModal
-            productsComponent.show()
+            const ProductsModal = this.$refs.ProductsModal
+            ProductsModal.show()
          },
          updateProducts(item) { //拆分( 新增,編輯 )
             this.tempProducts = item; // 將透過emit傳進來的 item 賦予進  this.tempProducts
@@ -105,41 +101,29 @@
                api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`
                httpMethod = 'put'
             }
-            const productsComponent = this.$refs.ProductsModal
+            const ProductsModal = this.$refs.ProductsModal
             // axios 連接方式以中括號帶入,概念是 object[httpMethod] 而 httpMethod 可以使用變數的方式傳入
             this.$http[httpMethod](api, {
                data: this.tempProducts
             }).then((res) => { // 將 {data:this.tempProducts} 發送給後端
-               productsComponent.hide(); // 觸發使呼叫 modal 實體化物件的方法 (關閉彈跳視窗)
-               if (res.data.success) {
-                  this.getproducts();      
-                  this.emitter.emit('push-message', { // 接收emit請求並回傳內容
-                     style: 'success',
-                     title: '更新成功',
-                  });
-               } else {
-                  this.emitter.emit('push-message', {
-                     style: 'danger',
-                     title: '更新失敗',
-                     content: res.data.message.join('、'),
-                  });
-               }
+               ProductsModal.hide(); // 觸發使呼叫 modal 實體化物件的方法 (關閉彈跳視窗)
+               this.getproducts()
             })
          },
          openDelModal(item) { // 打開 ( 刪除 ) 彈跳視窗
             this.tempProducts = {
                ...item
             };
-            const productsComponent = this.$refs.OpenDelModal;
-            productsComponent.show();
+            const OpenDelModal = this.$refs.OpenDelModal;
+            OpenDelModal.show();
          },
          delProducts() { // 連接後端要刪除商品的個別api
             const api =
                `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProducts.id}`
             this.$http.delete(api).then((res) => {
                console.log(res);
-               const productsComponent = this.$refs.OpenDelModal;
-               productsComponent.hide();
+               const OpenDelModal = this.$refs.OpenDelModal;
+               OpenDelModal.hide();
                this.getproducts();
             })
 

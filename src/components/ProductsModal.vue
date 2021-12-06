@@ -77,11 +77,11 @@
 
                      <div class="mb-3">
                         <label for="description" class="form-label">產品描述</label>
-                        <textarea type="text" class="form-control" id="description" placeholder="請輸入產品描述"></textarea>
+                        <textarea type="text" class="form-control" id="description" placeholder="請輸入產品描述" v-model="tempProducts.description"></textarea>
                      </div>
                      <div class="mb-3">
                         <label for="content" class="form-label">說明內容</label>
-                        <textarea type="text" class="form-control" id="content" placeholder="請輸入產品說明內容"></textarea>
+                        <textarea type="text" class="form-control" id="content" placeholder="請輸入產品說明內容" v-model="tempProducts.content"></textarea>
                      </div>
                      <div class="mb-3">
                         <div class="form-check">
@@ -109,7 +109,7 @@
 
 <script>
    // import Modal from 'bootstrap/js/dist/modal' // 載入 bootstrap 中的modal元件 , 以便實體化
-   import modalMixin from '@/mixins/modalMixin'
+   import modalMixin from '../mixins/modalMixin'
    export default {
       data() {
          return {
