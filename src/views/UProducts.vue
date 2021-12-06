@@ -229,13 +229,13 @@
             </div>
          </div>
       </div>
-      <UserProductsModal ref="UserProductsModal"></UserProductsModal>
+      <UserCartModal ref="UserProductsModal"></UserCartModal>
       <Toast :toastMsg="toastMsg" ref="toast"></Toast>
    </div>
 </template>
 <script>
 import Toast from "../components/Toast.vue";
-import UserProductsModal from "../components/UserProductsModal.vue";
+import UserCartModal from "../components/UserCartModal.vue";
 export default {
    data() {
       return {
@@ -244,7 +244,7 @@ export default {
       };
    },
    components: {
-      UserProductsModal, Toast
+      UserCartModal, Toast
    },
    methods: {
       getProducts() {
@@ -267,8 +267,9 @@ export default {
          };
          this.$http.post(api, { data: cart } ).then((res) => {
             this.toastMsg = res.data
+            this.$refs.toast.toast()
          });
-         this.$refs.toast.toast()
+         
       },
       ProductsModal() {
          const ProductsModal = this.$refs.UserProductsModal;

@@ -11,7 +11,11 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">購物車</h5>
+                    <span class="px-4">
+                        總計
+                        <span class="text-primary px-2">{{ cart.carts.length }}</span>項
+                    </span>
                     <button
                         type="button"
                         class="btn-close"
@@ -40,13 +44,21 @@
                         </span>
                     </div>
                 </div>
+                <div class="text-center">
+                    <strong>總計:</strong>
+                    <span class="text-primary mx-2">${{ $filters.currency(cart.total) }}</span>
+                    <div>
+                        <strong>優惠碼:</strong>
+                        <input class="mx-2" type="text" v-model="couponCode" />
+                        <button type="button" class="btn btn-dark" @click="addCouponCode">套用</button>
+                    </div>
+                </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" @click="delCartS">清空購物車</button>
+                    <button type="button" class="btn btn-outline-danger" @click="delCartS">清空</button>
                     <button
                         type="button"
                         class="btn btn-outline-secondary"
                         data-bs-dismiss="modal"
-                        @click="toasthide"
                     >關閉</button>
                     <button type="button" class="btn btn-outline-primary">結帳</button>
                 </div>
@@ -61,8 +73,11 @@ import modalMixin from '../mixins/modalMixin'
 export default {
     data() {
         return {
-            cart: {},
+            cart: {
+                carts: []
+            },
             toastMsg: "",
+            couponCode: "",
         }
     },
     components: {
@@ -80,16 +95,27 @@ export default {
             const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`
             this.$http.delete(api).then((res) => {
                 this.toastMsg = res.data
+                this.$refs.toast.toast()
             })
-            this.$refs.toast.toast()
         },
-        delCartS(){
+        delCartS() {
             const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/carts`
-            this.$http.delete(api).then( (res)=>{
+            this.$http.delete(api).then((res) => {
                 this.toastMsg = res.data
+                this.$refs.toast.toast()
                 this.getCart()
             })
-            this.$refs.toast.toast()
+        },
+        addCouponCode() {
+            const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/coupon`
+            const code = {
+                code: this.couponCode
+            }
+            this.$http.post(api, { data: code }).then((res) => {
+                console.log(res);
+                this.toastMsg = res.data
+                this.$refs.toast.toast()
+            })
         }
     },
     watch: {
@@ -99,7 +125,6 @@ export default {
     },
     created() {
         this.getCart()
-    },
-
+    }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-   <div class="text-end">
+   <div class="text-start">
       <!-- 打開Modal時傳入true以區分新增或是編輯(false則為編輯) -->
       <button class="btn btn-primary" type="button" @click="openModal(true)">增加一個產品</button>
    </div>
@@ -44,9 +44,11 @@
    <!-- 賦予ref為ProductsModal -->
    <OpenDelModal ref="OpenDelModal" :item="tempProducts" @del-item="delProducts"></OpenDelModal>
    <Loading :active="isLoading"></Loading> <!-- 讀取元件 :active="isLoading"為狀態false為關閉讀取 true為打開讀取 -->
+   <Toast :toastMsg="toastMsg" ref="toast"></Toast>
 </template>
 
 <script>
+   import Toast from '../components/Toast.vue'
    import ProductsModal from '../components/ProductsModal.vue'
    import OpenDelModal from '../components/delModal.vue'
    import Page from '../components/Page.vue'       // 引入頁碼
@@ -59,12 +61,14 @@
             tempProducts: {},
             isNaw: false,
             isLoading: false, // 預設為不讀取
+            toastMsg:{}
          }
       },
       components: {
          ProductsModal,
          OpenDelModal,
          Page,
+         Toast
       },
       methods: {
          getproducts( page=1 ) {    // 若沒有使用emit從子元件重入頁碼 , 則預設頁碼為1
@@ -78,7 +82,6 @@
                }
             })
          },
-         // 打開 ( 新增,編輯 ) 彈跳視窗
          openModal(isNaw, item) { // 傳入兩個參數一個為判斷新增或編輯的布林值,一個為要編輯的商品資料 
             this.isNaw = isNaw; // 將data中的isNaw換成傳入的布林值以便判斷
             if (isNaw) { // 當傳入的是true則為新增 , 將放置商品的tempProducts清空
@@ -101,32 +104,31 @@
                api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`
                httpMethod = 'put'
             }
-            const ProductsModal = this.$refs.ProductsModal
             // axios 連接方式以中括號帶入,概念是 object[httpMethod] 而 httpMethod 可以使用變數的方式傳入
             this.$http[httpMethod](api, {
                data: this.tempProducts
             }).then((res) => { // 將 {data:this.tempProducts} 發送給後端
-               ProductsModal.hide(); // 觸發使呼叫 modal 實體化物件的方法 (關閉彈跳視窗)
+               this.toastMsg = res.data
+               this.$refs.toast.toast()               
+               this.$refs.ProductsModal.hide(); 
                this.getproducts()
             })
          },
-         openDelModal(item) { // 打開 ( 刪除 ) 彈跳視窗
+         openDelModal(item) { 
             this.tempProducts = {
                ...item
             };
-            const OpenDelModal = this.$refs.OpenDelModal;
-            OpenDelModal.show();
+            this.$refs.OpenDelModal.show();
          },
          delProducts() { // 連接後端要刪除商品的個別api
             const api =
                `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProducts.id}`
             this.$http.delete(api).then((res) => {
-               console.log(res);
-               const OpenDelModal = this.$refs.OpenDelModal;
-               OpenDelModal.hide();
+               this.toastMsg = res.data
+               this.$refs.toast.toast()
+               this.$refs.OpenDelModal.hide();
                this.getproducts();
             })
-
          },
       },
       created() {

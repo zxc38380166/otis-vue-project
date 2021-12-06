@@ -21,6 +21,7 @@
                         <span class="visually-hidden">Loading...</span>
                     </div>
                 </strong>
+
                 <small>11 mins ago</small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
@@ -49,9 +50,11 @@ export default {
         toast() {
             const toast = new Toast(this.$refs.toast)
             toast.show()
-            setTimeout(function () {
+            const St = setTimeout(function () {
                 toast.hide()
+                clearInterval(St)
             }, 5000)
+           
         },
     },
 }
