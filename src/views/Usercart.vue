@@ -112,7 +112,6 @@
             </div>
          </div>
       </div>
-      <img src="C:/Users/zxc38/Desktop/300.webp" alt="">
    </div>
    <!-- <div class="my-5 row justify-content-center">
       <Form class="col-md-6" @submit="createOrder">
