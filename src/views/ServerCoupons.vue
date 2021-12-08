@@ -84,8 +84,6 @@ export default {
          this.tempCoupon = {
             ...item
          }
-         // console.log(item);
-         // console.log(this.tempCoupon);
          this.$refs.delModal.show()
       },
       getCoupons() {

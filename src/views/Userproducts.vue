@@ -92,10 +92,7 @@ export default {
     },
     addToCart(id) {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
-      const cart = {
-        product_id: id,
-        qty: 1,
-      };
+      const cart = { product_id: id, qty: 1, };
       this.isLoading = true;
       this.$http.post(api, { data: cart }).then((res) => {
         this.isLoading = false;

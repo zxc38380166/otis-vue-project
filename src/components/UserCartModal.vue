@@ -18,7 +18,7 @@
                </span>
                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body"> 
+            <div class="modal-body">
                <div
                   class="row alert alert-secondary align-items-center"
                   role="alert"
@@ -93,7 +93,7 @@ export default {
          },
          toastMsg: "",
          couponCode: "",
-         disabled:false,
+         disabled: false,
       }
    },
    components: {
@@ -110,13 +110,12 @@ export default {
       },
       upDataCart(cart) {
          const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${cart.id}`
-         const data = {
-            product_id: cart.id,
-            qty: cart.qty
-         }
+         if (cart.qty > 10) { cart.qty = 10 }
+         const data = { product_id: cart.id, qty: cart.qty }
          this.disabled = true;
          this.$http.put(api, { data: data }).then((res) => {
-            console.log(res);
+            this.toastMsg = res.data;
+            this.$refs.toast.toast();
             this.getCart()
             this.disabled = false;
          })
@@ -139,9 +138,7 @@ export default {
       },
       addCouponCode() {
          const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/coupon`
-         const code = {
-            code: this.couponCode
-         };
+         const code = { code: this.couponCode };
          this.textDecoration = "";
          this.$http.post(api, { data: code }).then((res) => {
             console.log(res);

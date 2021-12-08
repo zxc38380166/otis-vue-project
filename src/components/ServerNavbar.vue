@@ -52,7 +52,6 @@ export default {
          const api = `${process.env.VUE_APP_API}logout` // 取得登出的api
          this.$http.post(api,).then((res) => {
             if (res.data.success) { // 當res.data.success為true時執行
-               console.log(res)
                this.$router.push('/ServerLogin') // 此時取得後端資料為以登出,轉址回去登入頁面
             }
          })
