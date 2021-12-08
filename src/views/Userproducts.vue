@@ -1,76 +1,119 @@
 <template>
-  <Loading :active="isLoading"></Loading>
-  <div class="container">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <router-link to="/user/cart">購物車</router-link>
-        </li>
-        <li class="breadcrumb-item active" aria-current="page"></li>
-      </ol>
-    </nav>
-    <div class="row justify-content-center">
-      <article class="col-8">
-        <h2> {{ products.title}} </h2>
-        <div> {{ products.content }} </div>
-        <div> {{ products.description }} </div>
-        <img :src="products.imageUrl" alt="" class="img-fluid mb-3">
-      </article>
-      <div class="col-4">
-        <div class="h5" v-if="!products.price"> {{ products.origin_price }} 元</div>
-        <del class="h6" v-if="products.price">原價 {{ products.origin_price }} 元</del>
-        <div class="h5" v-if="products.price">現在只要 {{ products.price }} 元</div>
-        <hr>
-        <button type="button" class="btn btn-outline-danger" @click="addtoCart(products.id)">
-          加到購物車
+  <div class="d-flex flex-wrap justify-content-center bg-dark">
+    <!-- search and cart -->
+    <div class="w-75 row py-2">
+      <div class="d-flex col-12 col-md-6 justify-content-center">
+        <button type="button" class="btn btn-dark">風暴系列</button>
+        <button type="button" class="btn btn-dark">風暴系列</button>
+        <button type="button" class="btn btn-dark">風暴系列</button>
+      </div>
+      <div class="d-flex col-12 col-md-6 justify-content-center">
+        <input class="form-control w-50" type="search" placeholder="搜尋" aria-label="Search" />
+        <button class="btn btn-outline-success ms-1" type="submit" @click="CartModal">
+          <i class="bi bi-cart-fill" style="font-size: 1.2rem;"></i> 購物車
         </button>
       </div>
     </div>
+    <!-- products -->
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6 col-xl-4 py-1" v-for="item in products" :key="item.id">
+          <div class="card">
+            <img :src="item.imageUrl" class="card-img-top h-50" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title text-center">{{ item.title }}</h5>
+              <p class="card-text"></p>
+              <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item">
+                  <span
+                    class="text-decoration-line-through fw-light"
+                  >${{ $filters.currency(item.origin_price) }}</span>
+                  <span class="fw-bold fs-3 text-warning">${{ $filters.currency(item.price) }}</span>
+                </li>
+                <li class="list-group-item">{{ item.category }}</li>
+                <li class="list-group-item">{{ item.description }}</li>
+                <li class="list-group-item">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    @click.prevent="getProduct(item.id)"
+                  >查看詳情</button>
+                </li>
+              </ul>
+              <p class="text-center">
+                <button type="button" class="btn btn-outline-warning" @click="addToCart(item.id)">
+                  <i
+                    class="bi bi-cart-check ps-2 h"
+                    style="font-size: 1.3rem; color: rgb(10, 10, 10)"
+                  ></i>
+                  add to cart
+                </button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <UserFoot></UserFoot>
+    <UserCartModal ref="UserProductsModal"></UserCartModal>
+    <Toast :toastMsg="toastMsg" ref="toast"></Toast>
+    <Loading :active="isLoading"></Loading>
   </div>
 </template>
 <script>
-  export default {
-    data() {
-      return {
-        products: {},
-        id: '',
-      }
-    },
-    methods: {
-      getProducts() {
-        this.isLoading = true;
-        const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`
-        console.log(api);
-        this.$http.get(api).then((res) => {
-          this.isLoading = false
-          console.log(res);
-          this.products = res.data.product // 取得後端 res.data.product 並賦予進 this.products
-        })
+import UserFoot from '../components/UserFoot.vue'
+import Toast from "../components/Toast.vue";
+import UserCartModal from "../components/UserCartModal.vue";
+export default {
+  data() {
+    return {
+      products: [],
+      toastMsg: {},
+      isLoading: false,
+      status: {
+        load: "",
       },
-      addtoCart(id) {
-        const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-        console.log(id);
-        const cart = {
-          product_id: id,
-          qty: 1,
-        }
-        this.$http.post(api, {
-          data: cart
-        }).then((res) => {
-          console.log(res);
-        })
-        this.$router.push('/user/cart');
+    };
+  },
+  components: {
+    UserCartModal, Toast, UserFoot
+  },
+  methods: {
+    getProducts() {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
+      this.isLoading = true;
+      this.$http.get(api).then((res) => {
+        this.isLoading = false;
+        this.products = res.data.products;
+      });
+    },
+    getProduct(id) {
+      console.log(id);
+    },
+    addToCart(id) {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+      const cart = {
+        product_id: id,
+        qty: 1,
+      };
+      this.isLoading = true;
+      this.$http.post(api, { data: cart }).then((res) => {
+        this.isLoading = false;
+        this.toastMsg = res.data
+        this.$refs.toast.toast()
+        this.$refs.UserProductsModal.getCart()
+      });
 
-      }
     },
-    created() {
-      this.id = this.$route.params.productId // 路由中的 $route.params.productI 賦予進 this.id
-      this.getProducts()
+    CartModal() {
+      const ProductsModal = this.$refs.UserProductsModal;
+      ProductsModal.show();
     },
-  }
+  },
+  created() {
+    this.getProducts();
+  },
+};
 </script>
-<style>
-  #container {
-    background-color: black;
-  }
+<style lang="scss">
 </style>

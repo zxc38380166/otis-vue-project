@@ -1,6 +1,13 @@
 <template>
-   <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true" ref="modal">
+   <div
+      class="modal fade"
+      id="productModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+      ref="modal"
+   >
       <div class="modal-dialog modal-xl" role="document">
          <div class="modal-content border-0">
             <div class="modal-header bg-dark text-white">
@@ -40,7 +47,7 @@
                         <tbody>
                            <tr>
                               <th style="width: 100px">訂單編號</th>
-                              <td>{{tempOrders.id}}</td>
+                              <td>{{ tempOrders.id }}</td>
                            </tr>
                            <tr>
                               <th>下單時間</th>
@@ -49,9 +56,9 @@
                            <tr>
                               <th>付款時間</th>
                               <td>
-                                 <span v-if="tempOrders.paid_date">
-                                    {{ $filters.date(tempOrders.paid_date) }}
-                                 </span>
+                                 <span
+                                    v-if="tempOrders.paid_date"
+                                 >{{ $filters.date(tempOrders.paid_date) }}</span>
                                  <span v-else>時間不正確</span>
                               </td>
                            </tr>
@@ -64,30 +71,20 @@
                            </tr>
                            <tr>
                               <th>總金額</th>
-                              <td>
-                                 {{ tempOrders.total }}
-                              </td>
+                              <td>{{ tempOrders.total }}</td>
                            </tr>
                         </tbody>
                      </table>
                      <h3>選購商品</h3>
                      <table class="table">
                         <thead>
-                           <tr>
-                              
-                           </tr>
+                           <tr></tr>
                         </thead>
                         <tbody v-for="item in tempOrders.products" :key="item.id">
                            <tr>
-                              <th>
-                                 {{ item.product.title }}
-                              </th>
-                              <td>
-                                 {{ item.qty }} / {{ item.product.unit }}
-                              </td>
-                              <td class="text-end">
-                                 {{ $filters.currency(item.final_total) }}
-                              </td>
+                              <th>{{ item.product.title }}</th>
+                              <td>{{ item.qty }} / {{ item.product.unit }}</td>
+                              <td class="text-end">{{ $filters.currency(item.final_total) }}</td>
                            </tr>
                         </tbody>
                      </table>
@@ -95,9 +92,12 @@
                </div>
             </div>
             <div class="modal-footer">
-               <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">取消
-               </button>
-               <button type="button" class="btn btn-primary" @click="$emit('updataOrder',tempOrders)">確認付款</button>
+               <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">取消</button>
+               <button
+                  type="button"
+                  class="btn btn-primary"
+                  @click="$emit('updataOrder', tempOrders)"
+               >確認付款</button>
             </div>
          </div>
       </div>
@@ -108,23 +108,23 @@ import modalMixin from '@/mixins/modalMixin'
 export default {
    data() {
       return {
-         tempOrders:{}
+         tempOrders: {}
       }
    },
-   props:{
-      Order:{
+   props: {
+      Order: {
          // type: Object,
          // default() { return {}; },
       }
-      
+
    },
-   watch:{
-      Order(){
+   watch: {
+      Order() {
          this.tempOrders = this.Order
          console.log(this.tempOrders);
       }
    },
-   mixins:[
+   mixins: [
       modalMixin
    ],
 }

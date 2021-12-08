@@ -51,7 +51,7 @@
 </template>
 <script>
    import DelModal from '../components/delModal.vue'
-   import OrderModal from '../components/OrdersModal.vue'
+   import OrderModal from '../components/ServerOrdersModal.vue'
    import Page from '../components/Page.vue'
    export default {
       data() {

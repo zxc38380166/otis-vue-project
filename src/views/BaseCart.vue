@@ -113,7 +113,7 @@
          </div>
       </div>
    </div>
-   <!-- <div class="my-5 row justify-content-center">
+   <div class="my-5 row justify-content-center">
       <Form class="col-md-6" @submit="createOrder">
 
          <div class="mb-3">
@@ -154,7 +154,7 @@
             <button type="submit" class="btn btn-danger">送出訂單</button>
          </div>
       </Form>
-   </div> -->
+   </div>
    <Loading :active="isLoading"></Loading>
 </template>
 <script>
@@ -206,7 +206,7 @@
             })
          },
          getProduct(id) {
-            this.$router.push(`/user/product/${id}`) // 利用參數傳入 id 並帶入路由導向
+            this.$router.push(`/Base/BaseProducts/${id}`) // 利用參數傳入 id 並帶入路由導向
          },
          addCart(id) {
             const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`

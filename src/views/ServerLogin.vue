@@ -61,7 +61,7 @@ export default {
                   expired
                } = res.data // 取得連線後的資料
                document.cookie = `hexToken=${token} ; expired=${new Date(expired)}` // 將token加入cookie
-               this.$router.push('/dashboard/Products')
+               this.$router.push('/ServerBoard/ServerProducts')
             } else {
                this.toastMsg = res.data
                this.$refs.toast.toast()

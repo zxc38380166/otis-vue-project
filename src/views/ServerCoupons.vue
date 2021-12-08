@@ -45,7 +45,7 @@
 </template>
 <script>
 import Toast from '../components/Toast.vue'
-import CouponModal from '@/components/CouponModal.vue';
+import CouponModal from '@/components/ServerCouponModal.vue';
 import DelModal from '@/components/delModal.vue'
 export default {
    data() {

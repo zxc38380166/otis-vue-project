@@ -49,7 +49,7 @@
 
 <script>
    import Toast from '../components/Toast.vue'
-   import ProductsModal from '../components/ProductsModal.vue'
+   import ProductsModal from '../components/ServerProductsModal.vue'
    import OpenDelModal from '../components/delModal.vue'
    import Page from '../components/Page.vue'       // 引入頁碼
    //import {currency} from '../methods/filters'     // 引入千分號 (全域已註冊)

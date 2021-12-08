@@ -2,71 +2,62 @@ import {
    createRouter,
    createWebHashHistory
 } from 'vue-router'
-import Home from '../views/Login.vue'
+import Home from '../views/ServerLogin.vue'
 
 const routes = [
    {
-      path: '/',
-      name: 'Home',
-      component: Home,
+      path: '/ServerLogin',
+      component: () => import('../views/ServerLogin.vue')
    },
    {
-      path: '/about',
-      name: 'About',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import( /* webpackChunkName: "about" */ '../views/About.vue')
-   },
-   {
-      path: '/login',
-      component: () => import('../views/Login.vue')
-   },
-   {
-      path: '/dashboard',
-      component: () => import('../views/Dashboard.vue'),
+      path: '/ServerBoard',
+      component: () => import('../views/ServerBoard.vue'),
       children: [
          {
-            path: 'Products',
-            component: () => import('../views/Products.vue'),
+            path: 'ServerProducts',
+            component: () => import('../views/ServerProducts.vue'),
          },
          {
-            path: 'Orders',
-            component: () => import('../views/Orders.vue')
+            path: 'ServerOrders',
+            component: () => import('../views/ServerOrders.vue')
          },
          {
-            path : 'Coupons',
-            component:  ()=> import('../views/Coupons.vue')
+            path : 'ServerCoupons',
+            component:  ()=> import('../views/ServerCoupons.vue')
          }
       ],
    },
    {
-      path: '/User',
-      component: () => import('../views/Userboard.vue'),
+      path: '/Base',
+      component: () => import('../views/Baseboard.vue'),
       children:
       [
          {
-            path: 'cart',
-            component: () => import('../views/Usercart.vue')
+            path: 'BaseCart',
+            component: () => import('../views/BaseCart.vue')
          },
          {
-            path: 'product/:productId',
-            component: () => import('../views/Userproducts.vue')
+            path: 'BaseProducts/:BaseProductsId',
+            component: () => import('../views/BaseProducts.vue')
          },
          {
             path: 'checkout/:orderId',
-            component: () => import('../views/UserCheckOut.vue')
+            component: () => import('../views/BaseCheckOut.vue')
          }
       ]
    },
    {
-      path: '/UBord',
-      component:  ()=>import('../views/UBord.vue'),
+      path: '/UserBord',
+      component:  ()=>import('../views/UserBord.vue'),
       children:
       [
          {
-            path: 'Uproducts',
-            component:  ()=>import('../views/Uproducts.vue')
+            path: 'UserProducts',
+            component:  ()=>import('../views/UserProducts.vue')
+         },
+         {
+            path:'UserCheckOut',
+            component:()=>import('../views/UserCheckOut.vue')
          }
       ]
    }

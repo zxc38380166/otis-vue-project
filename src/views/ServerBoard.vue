@@ -7,7 +7,7 @@
 </template>
 
 <script>
-   import Navbar from '../components/Navbar.vue';
+   import Navbar from '../components/ServerNavbar.vue';
    export default {
       components: {
          Navbar, // 元件拆分 (導覽列)
@@ -22,7 +22,7 @@
          const api = `${process.env.VUE_APP_API}api/user/check`;
          this.$http.post(api, ).then((res) => { // 利用axios的post方法連接api
             if (!res.data.success) { // 判斷當res中的success為false
-               this.$router.push('/login')
+               this.$router.push('/ServerLogin')
             }
          })
       },
