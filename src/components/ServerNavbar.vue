@@ -1,12 +1,8 @@
 <template>
    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-         <a class="navbar-brand" href="#">
-            <router-link class="navbar-brand" href="#" to="/Base/BaseCart">切換至用戶端</router-link>
-         </a>
-         <a class="navbar-brand" href="#">
-            <router-link class="navbar-brand" href="#" to="/UserBord/UserProducts">切換至用戶端(work)</router-link>
-         </a>
+         <router-link class="navbar-brand" href="#" to="/Base/BaseCart">切換至用戶端</router-link>
+         <router-link class="navbar-brand" href="#" to="/UserBoard/UserProducts">切換至用戶端(work)</router-link>
          <button
             class="navbar-toggler"
             type="button"
@@ -20,26 +16,10 @@
          </button>
          <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-               <li class="nav-item">
-                  <a class="nav-link" href="#">
-                     <router-link to="/ServerBoard/ServerProducts" class="nav-link">產品</router-link>
-                  </a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="#">
-                     <router-link to="/ServerBoard/ServerOrders" class="nav-link">訂單</router-link>
-                  </a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link">
-                     <router-link to="/ServerBoard/ServerCoupons" class="nav-link">優惠券</router-link>
-                  </a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" @click.prevent="logout">
-                     <router-link to="/ServerBoard/ServerLogin" class="nav-link">登出</router-link>
-                  </a>
-               </li>
+               <router-link to="/ServerBoard/ServerProducts" class="nav-link">產品</router-link>
+               <router-link to="/ServerBoard/ServerOrders" class="nav-link">訂單</router-link>
+               <router-link to="/ServerBoard/ServerCoupons" class="nav-link">優惠券</router-link>
+               <router-link to="/ServerBoard/ServerLogin" class="nav-link">登出</router-link>
             </ul>
          </div>
       </div>

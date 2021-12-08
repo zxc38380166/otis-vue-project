@@ -85,6 +85,7 @@
 <script>
 import Toast from '../components/Toast.vue'
 import modalMixin from '../mixins/modalMixin'
+
 export default {
    data() {
       return {
@@ -97,7 +98,7 @@ export default {
       }
    },
    components: {
-      Toast
+      Toast,
    },
    mixins: [modalMixin],
    methods: {
@@ -148,8 +149,8 @@ export default {
          })
       },
       checkOut() {
-         this.hide()
-         this.$router.push('/UserBord/UserCheckOut')
+         this.$router.push('/UserBoard/UserCheckOut');
+         this.hide();
       },
    },
    created() {
@@ -157,3 +158,9 @@ export default {
    }
 }
 </script>
+<style lang="scss">
+   input[type="number"]::-webkit-inner-spin-button,
+   input[type="number"]::-webkit-outer-spin-button {
+      opacity: 1;
+   }
+</style>

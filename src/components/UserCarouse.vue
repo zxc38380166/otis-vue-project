@@ -26,25 +26,19 @@
         <div class="carousel-item active">
           <img
             src="https://jedchang.github.io/ClocksStore/img/banner_02.8b09666c.jpg"
-            class="d-block w-100"
-            alt="..."
-            style="height: auto"
+            class="d-block w-100 h-auto"
           />
         </div>
         <div class="carousel-item">
           <img
             src="https://jedchang.github.io/ClocksStore/img/banner_01.c28d7de8.jpg"
-            class="d-block w-100"
-            alt="..."
-            style="height: auto"
+            class="d-block w-100 h-auto"
           />
         </div>
         <div class="carousel-item">
           <img
             src="https://jedchang.github.io/ClocksStore/img/banner_04.27833224.jpg"
-            class="d-block w-100"
-            alt="..."
-            style="height: auto"
+            class="d-block w-100 h-auto"
           />
         </div>
       </div>

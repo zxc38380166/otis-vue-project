@@ -1,7 +1,7 @@
 <template>
     <div class="bg-dark">
+        <!-- 導覽列 -->
         <div class="navber d-flex justify-content-center">
-            <!-- 導覽列 -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-light w-75 justify-content bg-dark">
                 <div class="container-fluid">
                     <router-link class="navbar-brand" to="/ServerBoard/ServerProducts">切換至後台端</router-link>
@@ -18,9 +18,9 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                            <a class="nav-link" aria-current="page" href="#">品牌故事</a>
-                            <a class="nav-link" href="#">FAQ</a>
-                            <a class="nav-link" href="#">合作邀約</a>
+                            <router-link class="nav-link" to="/UserBoard/UserProducts">型錄</router-link>
+                            <router-link class="nav-link" to="/UserBoard/UserCheckOut">訂單</router-link>
+                            <router-link class="nav-link" to="/UserBoard/UserCheckOut">123</router-link>
                         </div>
                     </div>
                 </div>

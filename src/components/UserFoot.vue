@@ -1,10 +1,10 @@
 <template>
-    <div class="container py-3">
+    <div class="container py-3 ">
         <div class="row">
             <div class="col-12">
                 <div class="card text-center">
                     <div class="card-header">
-                        <i class="bi bi-truck" style="font-size: 2rem; color: cornflowerblue"></i>
+                        <i class="bi bi-truck" style="font-size: 1.5rem; color: cornflowerblue"></i>
                         購買任一系列,憑保固卡線上登錄即享免費到府維修收送
                     </div>
                     <div class="card-body">

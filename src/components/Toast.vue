@@ -1,5 +1,5 @@
 <template>
-    <div class="position-fixed top-0 end-0">
+    <div class="position-fixed top-0 start-50 translate-middle-x">
         <div
             role="alert"
             aria-live="assertive"
@@ -21,11 +21,10 @@
                         <span class="visually-hidden">Loading...</span>
                     </div>
                 </strong>
-
                 <small>11 mins ago</small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
-            <div class="toast-body">{{ Msg.message }}</div>
+            <div class="toast-body fs-5" style="background-color:rgb(224, 224, 224) ">{{ Msg.message }}</div>
         </div>
     </div>
 </template>
@@ -59,3 +58,6 @@ export default {
     },
 }
 </script>
+<style lang="scss">
+
+</style>

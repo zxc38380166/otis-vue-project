@@ -2,7 +2,7 @@
   <div class="d-flex flex-wrap justify-content-center bg-dark">
     <!-- search and cart -->
     <div class="w-75 row py-2">
-      <div class="d-flex col-12 col-md-6 justify-content-center">
+      <div class="d-flex flex-wrap col-12 col-md-6 justify-content-center">
         <button type="button" class="btn btn-dark">風暴系列</button>
         <button type="button" class="btn btn-dark">風暴系列</button>
         <button type="button" class="btn btn-dark">風暴系列</button>
@@ -19,7 +19,7 @@
       <div class="row">
         <div class="col-12 col-md-6 col-xl-4 py-1" v-for="item in products" :key="item.id">
           <div class="card">
-            <img :src="item.imageUrl" class="card-img-top h-50" alt="..." />
+            <img :src="item.imageUrl" class="card-img-top h-25">
             <div class="card-body">
               <h5 class="card-title text-center">{{ item.title }}</h5>
               <p class="card-text"></p>

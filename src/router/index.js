@@ -50,8 +50,8 @@ const routes = [
       ]
    },
    {
-      path: '/UserBord',
-      component:  ()=>import('../views/UserBord.vue'),
+      path: '/UserBoard',
+      component:  ()=>import('../views/UserBoard.vue'),
       children:
       [
          {
