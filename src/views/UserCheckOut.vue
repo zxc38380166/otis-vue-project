@@ -204,7 +204,7 @@
                                                 <i class="bi bi-cart-fill"></i>
                                                 購物車
                                             </button>
-                                            <button class="btn btn-outline-primary" type="submit">
+                                            <button class="btn btn-outline-primary" type="button">
                                                 <div
                                                     v-if="!toastMsg.success"
                                                     @click.prevent="CreateOrder"
