@@ -48,23 +48,27 @@
    <Page :pages="pagination" @emit-pages="getOrders"></Page>
    <Loading :active="isLoading"></Loading>
    <DelModal ref="delModal" :item="tempOrders" @del-item="delOrder"></DelModal>
+   <Toast :toastMsg="toastMsg"></Toast>
 </template>
 <script>
    import DelModal from '../components/delModal.vue'
    import OrderModal from '../components/ServerOrdersModal.vue'
    import Page from '../components/Page.vue'
+   import Toast from '../components/Toast.vue'
    export default {
       data() {
          return {
             orders: {},
             tempOrders: {},
             pagination: '',
+            toastMsg:{},
          }
       },
       components: {
          OrderModal,
          Page,
-         DelModal
+         DelModal,
+         Toast
       },
       methods: {
          getOrders(page = 1) {
@@ -95,6 +99,7 @@
             this.$http.put(api, {
                data: is_paid
             }).then((res) => {
+               this.toastMsg = res.data
                console.log(res);
                this.getOrders(item.current_page)
                this.$refs.orderModal.hide()
@@ -112,6 +117,7 @@
             const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${this.tempOrders.id}`
             console.log(api);
             this.$http.delete(api).then((res) => {
+               this.toastMsg = res.data
                this.getOrders(this.pagination.current_page)
                this.$refs.delModal.hide()
             })

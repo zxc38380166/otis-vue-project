@@ -42,22 +42,13 @@ export default {
     watch: {
         toastMsg() {
             this.Msg = this.toastMsg
-            console.log();
-        }
-    },
-    methods: {
-        toast() {
             const toast = new Toast(this.$refs.toast)
             toast.show()
             const St = setTimeout(function () {
                 toast.hide()
                 clearInterval(St)
             }, 5000)
-           
-        },
+        }
     },
 }
 </script>
-<style lang="scss">
-
-</style>

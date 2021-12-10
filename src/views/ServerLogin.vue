@@ -64,7 +64,6 @@ export default {
                this.$router.push('/ServerBoard/ServerProducts')
             } else {
                this.toastMsg = res.data
-               this.$refs.toast.toast()
             }
          });
 

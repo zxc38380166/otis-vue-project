@@ -1,4 +1,7 @@
 <template>
+<div class="container w-100" style="background-color: aquamarine;">
+
+</div>
    <div class="text-start">
       <!-- 打開Modal時傳入true以區分新增或是編輯(false則為編輯) -->
       <button class="btn btn-primary" type="button" @click="openModal(true)">增加一個產品</button>
@@ -8,7 +11,7 @@
          <tr>
             <th width="120">分類</th>
             <th>產品名稱</th>
-            <th width="120">原價</th>
+            <th width="120" class=" text-wrap">原價</th>
             <th width="120">售價</th>
             <th width="100">是否啟用</th>
             <th width="200">編輯</th>
@@ -108,8 +111,7 @@
             this.$http[httpMethod](api, {
                data: this.tempProducts
             }).then((res) => { // 將 {data:this.tempProducts} 發送給後端
-               this.toastMsg = res.data
-               this.$refs.toast.toast()               
+               this.toastMsg = res.data             
                this.$refs.ProductsModal.hide(); 
                this.getproducts()
             })
@@ -125,7 +127,6 @@
                `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProducts.id}`
             this.$http.delete(api).then((res) => {
                this.toastMsg = res.data
-               this.$refs.toast.toast()
                this.$refs.OpenDelModal.hide();
                this.getproducts();
             })

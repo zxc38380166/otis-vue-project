@@ -103,7 +103,6 @@ export default {
             }).then((res) => {
                console.log(res);
                this.toastMsg = res.data
-               this.$refs.toast.toast()
                this.$refs.CouponModal.hide()
                this.getCoupons()
             })
@@ -114,7 +113,6 @@ export default {
                data: item
             }).then((res) => {
                this.toastMsg = res.data
-               this.$refs.toast.toast()
                this.$refs.CouponModal.hide()
                this.getCoupons()
             })
@@ -124,7 +122,6 @@ export default {
          const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempCoupon.id}`
          this.$http.delete(api).then((res) => {
             this.toastMsg = res.data
-            this.$refs.toast.toast()
             this.$refs.delModal.hide()
             this.getCoupons()
          })
