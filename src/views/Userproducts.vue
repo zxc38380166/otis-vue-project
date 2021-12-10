@@ -1,33 +1,54 @@
 <template>
-  <div class="d-flex flex-wrap justify-content-center bg-dark">
+  <div class="bg-dark">
     <!-- search and cart -->
-    <div class="w-75 row py-2">
-      <div class="d-flex flex-wrap col-12 col-md-6 justify-content-center">
-        <button type="button" class="btn btn-dark">風暴系列</button>
-        <button type="button" class="btn btn-dark">風暴系列</button>
-        <button type="button" class="btn btn-dark">風暴系列</button>
-      </div>
-      <div class="d-flex col-12 col-md-6 justify-content-center">
-        <input
-          class="form-control w-50"
-          type="search"
-          placeholder="搜尋"
-          aria-label="Search"
-        />
-        <button
-          class="btn btn-outline-success ms-1"
-          type="submit"
-          @click="CartModal"
-        >
-          <i class="bi bi-cart-fill" style="font-size: 1.2rem"></i> 購物車
-        </button>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 d-flex justify-content-center pt-1">
+          <button
+            type="button"
+            class="btn btn-dark"
+            style="border-color: rgb(175, 174, 174); color: rgb(175, 174, 174)"
+          >
+            CS-Amax
+          </button>
+          <button
+            type="button"
+            class="btn btn-dark"
+            style="border-color: rgb(175, 174, 174); color: rgb(175, 174, 174)"
+          >
+            CS-Yasu
+          </button>
+          <button
+            type="button"
+            class="btn btn-dark"
+            style="border-color: rgb(175, 174, 174); color: rgb(175, 174, 174)"
+          >
+            CS-Frady
+          </button>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center pt-1">
+          <input
+            class="form-control w-50"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button
+            class="btn btn-outline-success ms-1"
+            type="submit"
+            @click="CartModal"
+          >
+            <i class="bi bi-cart-fill" style="font-size: 1.2rem"></i> 購物車
+          </button>
+        </div>
       </div>
     </div>
+
     <!-- products -->
     <div class="container">
       <div class="row">
         <div
-          class="col-12 col-md-6 col-xl-4 py-1"
+          class="col-md-6 col-xl-4 py-1"
           v-for="item in products"
           :key="item.id"
         >
@@ -39,7 +60,7 @@
                 height: `300px`,
                 backgroundPosition: `center`,
                 backgroundRepeat: `no-repeat`,
-                backgroundSize:`contain`,
+                backgroundSize: `contain`,
               }"
             ></div>
             <!-- <img :src="item.imageUrl" class="card-img-top h-25" /> -->
@@ -67,7 +88,7 @@
                   </button>
                 </li>
               </ul>
-              <p class="text-center">
+              <div class="text-center">
                 <button
                   type="button"
                   class="btn btn-outline-warning"
@@ -79,7 +100,7 @@
                   ></i>
                   add to cart
                 </button>
-              </p>
+              </div>
             </div>
           </div>
         </div>

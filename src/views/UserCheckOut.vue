@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-dark text-dark h-100">
-    <div class="container py-3">
+  <div class="bg-dark">
+    <div class="container">
       <div class="card">
         <div class="card-header row">
-          <div class="col-12 col-md-9 d-flex flex-wrap">
+          <div class="col-md-9 d-flex">
             <input class="form-control me-2 w-50" type="search" v-model="search" placeholder="輸入訂單編號" />
             <button class="btn btn-outline-success" type="button" @click="searchOrder()">查詢訂單</button>
           </div>
@@ -12,7 +12,7 @@
           <h5 class="card-title"><button type="button"
               class="btn btn-outline-secondary fw-bold text-dark">配送狀態:配送中</button></h5>
           <table class="row">
-            <tbody class="col-12 col-md-6">
+            <tbody class="col-md-6">
               <tr class="row">
                 <th>收件人資料</th>
                 <td>訂單編號: {{ orderData.id }}</td>
@@ -23,7 +23,7 @@
                 <td>備註:{{ orderData.message }}</td>
               </tr>
             </tbody>
-            <tfoot class="col-12 col-md-6">
+            <tfoot class="col-md-6">
               <th>購買品項</th>
               <tr class="row" v-for="item in orderData.products" :key="item.id">
                 <td class="col-4">{{ item.product.title }}</td>
