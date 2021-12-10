@@ -19,7 +19,7 @@
                <router-link to="/ServerBoard/ServerProducts" class="nav-link">產品</router-link>
                <router-link to="/ServerBoard/ServerOrders" class="nav-link">訂單</router-link>
                <router-link to="/ServerBoard/ServerCoupons" class="nav-link">優惠券</router-link>
-               <router-link to="/ServerBoard/ServerLogin" class="nav-link">登出</router-link>
+               <router-link to="/ServerLogin" class="nav-link">登出</router-link>
             </ul>
          </div>
       </div>

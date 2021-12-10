@@ -30,7 +30,7 @@
                 <td class="col-3">數量:{{ item.qty }}</td>
                 <td class="col-5">${{ item.total }}</td>
               </tr>
-              <th class="row">
+              <th class="row"><hr>
               <td class="col-7">總計</td>
               <td class="col-5">${{ orderData.total }}</td>
               </th>
@@ -58,18 +58,18 @@
                         </span>
                         <input type="text" class="form-control" id="validationCustom01" required placeholder="請輸入姓名"
                           v-model="from.user.name" />
-                        <div class="invalid-feedback">Please choose a username.</div>
+                        <div class="invalid-feedback"><i class="bi bi-x"></i>此欄位為必填寫</div>
                       </div>
                     </div>
                     <div class="col-md-4">
-                      <label for="validationCustomUsername" class="form-label">手機 :</label>
+                      <label for="validationCustomUsername" class="form-label">電話 :</label>
                       <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">
                           <i class="bi bi-telephone-fill"></i>
                         </span>
-                        <input type="text" class="form-control" id="validationCustom02" required placeholder="請輸入手機"
+                        <input type="text" class="form-control" id="validationCustom02" required placeholder="請輸入電話"
                           v-model="from.user.tel" />
-                        <div class="invalid-feedback">Please choose a username.</div>
+                        <div class="invalid-feedback"><i class="bi bi-x"></i>此欄位為必填寫</div>
                       </div>
                     </div>
                     <div class="col-md-4">
@@ -81,7 +81,7 @@
                         <input type="text" class="form-control" id="validationCustomUsername"
                           aria-describedby="inputGroupPrepend" required placeholder="請輸入Email"
                           v-model="from.user.email" />
-                        <div class="invalid-feedback">Please choose a username.</div>
+                        <div class="invalid-feedback"><i class="bi bi-x"></i>此欄位為必填寫</div>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -90,9 +90,9 @@
                         <span class="input-group-text" id="inputGroupPrepend">
                           <i class="bi bi-house-fill"></i>
                         </span>
-                        <input type="text" class="form-control" id="validationCustom02" required placeholder="請輸入地址"
+                        <input type="text" class="form-control" id="validationCustom02" required placeholder="請輸入收件地址"
                           v-model="from.user.address" />
-                        <div class="invalid-feedback">Please choose a username.</div>
+                        <div class="invalid-feedback"><i class="bi bi-x"></i>此欄位為必填寫</div>
                       </div>
                     </div>
                     <div class="col-md-6">

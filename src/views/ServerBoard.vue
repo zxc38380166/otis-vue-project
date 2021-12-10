@@ -1,10 +1,7 @@
 <template>
-   
- 
+<div class="bg-dark w-100"></div>
       <Navbar></Navbar>
       <router-view />
-  
-
 </template>
 
 <script>

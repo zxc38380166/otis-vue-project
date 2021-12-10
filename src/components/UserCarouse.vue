@@ -28,28 +28,55 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <!-- <div class="d-block bg-dark" :style="backImgage1"></div> -->
         <img
           src="https://jedchang.github.io/ClocksStore/img/banner_02.8b09666c.jpg"
           class="d-block w-100"
         />
+        <span style="position: absolute; top: 35%; left: 50%">
+          <span class="text-warning fs-5">品牌傳承 : 源自布拉蘇絲</span>\
+          <div class="w-100">
+            <p class="text-muted imgText w-75">
+              在安寧恬靜的瑞士汝拉山谷，居民的生活隨著打造複雜功能機械裝置的節奏而律動。開始譜寫高潮迭起的製錶史詩。汝拉山谷擁有森林、溪水、冰雪、鐵礦石等天然資源，有利於製錶業的發展及興盛。汝拉山谷未經人工修飾的自然景觀和滿天星斗的夜空，啓發了一代代製錶師的創作靈感。
+            </p>
+            <button type="button" class="btn btn-outline-secondary btn-sm">
+              -探索系列
+            </button>
+          </div>
+        </span>
       </div>
       <div class="carousel-item">
         <img
           src="https://jedchang.github.io/ClocksStore/img/banner_01.c28d7de8.jpg"
           class="d-block w-100 h-auto"
         />
+        <span style="position: absolute; top: 35%; left: 10%">
+          <span class="text-warning fs-5">品牌傳承 : 源自布拉蘇絲</span>\
+          <div class="w-75">
+            <p class="text-muted imgText w-50">
+              在安寧恬靜的瑞士汝拉山谷，居民的生活隨著打造複雜功能機械裝置的節奏而律動。開始譜寫高潮迭起的製錶史詩。汝拉山谷擁有森林、溪水、冰雪、鐵礦石等天然資源，有利於製錶業的發展及興盛。汝拉山谷未經人工修飾的自然景觀和滿天星斗的夜空，啓發了一代代製錶師的創作靈感。
+            </p>
+            <button type="button" class="btn btn-outline-secondary btn-sm">
+              -探索系列
+            </button>
+          </div>
+        </span>
       </div>
       <div class="carousel-item">
         <img
           src="https://jedchang.github.io/ClocksStore/img/banner_04.27833224.jpg"
           class="d-block w-100 h-auto"
         />
-        <span style="position: absolute; top: 10%; left: 10% " class="row">
-          <span class="col-6">123</span>
-          <span class="col-6">123</span>
-        </span
-        >
+        <span style="position: absolute; top: 35%; left: 50%">
+          <span class="text-warning fs-6 fs-md-5">品牌傳承 : 源自布拉蘇絲</span>\
+          <div class="w-100">
+            <p class="text-muted imgText w-75">
+              在安寧恬靜的瑞士汝拉山谷，居民的生活隨著打造複雜功能機械裝置的節奏而律動。開始譜寫高潮迭起的製錶史詩。汝拉山谷擁有森林、溪水、冰雪、鐵礦石等天然資源，有利於製錶業的發展及興盛。汝拉山谷未經人工修飾的自然景觀和滿天星斗的夜空，啓發了一代代製錶師的創作靈感。
+            </p>
+            <button type="button" class="btn btn-outline-secondary btn-sm">
+              -探索系列
+            </button>
+          </div>
+        </span>
       </div>
     </div>
     <button
@@ -59,7 +86,7 @@
       data-bs-slide="prev"
     >
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
+      <span class="visually-hidden"></span>
     </button>
     <button
       class="carousel-control-next"
@@ -68,7 +95,7 @@
       data-bs-slide="next"
     >
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
+      <span class="visually-hidden"></span>
     </button>
   </div>
 </template>
@@ -89,3 +116,10 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+@media (max-width: 950px) {
+  .imgText {
+    display: none;
+  }
+}
+</style>
