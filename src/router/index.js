@@ -55,6 +55,10 @@ const routes = [
       children:
       [
          {
+            path: 'UserHome',
+            component:  ()=>import('../views/UserHome.vue')
+         },
+         {
             path: 'UserProducts',
             component:  ()=>import('../views/UserProducts.vue')
          },

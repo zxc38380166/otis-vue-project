@@ -1,18 +1,18 @@
 <template>
-  <div class="bg-dark">
     <div class="container">
-      <div class="card">
+      <div class="card bg-dark border-bottom border-secondary text-light">
         <div class="card-header row">
           <div class="col-md-9 d-flex">
             <input class="form-control me-2 w-50" type="search" v-model="search" placeholder="輸入訂單編號" />
             <button class="btn btn-outline-success" type="button" @click="searchOrder()">查詢訂單</button>
           </div>
         </div>
-        <div class="card-body row" v-if="orderData.id">
+        <div class="card-body row " v-if="orderData.id">
           <h5 class="card-title"><button type="button"
-              class="btn btn-outline-secondary fw-bold text-dark">配送狀態:配送中</button></h5>
-          <table class="row">
-            <tbody class="col-md-6">
+              class="btn btn-outline-secondary fw-bold  text-light">配送狀態:配送中</button></h5>
+          
+          <table class="row ">
+            <tbody class="col-md-6 ">
               <tr class="row">
                 <th>收件人資料</th>
                 <td>訂單編號: {{ orderData.id }}</td>
@@ -40,9 +40,9 @@
       </div>
     </div>
     <div class="container py-3">
-      <div class="card">
-        <div class="card-header">
-          <button type="button" class="btn btn-outline-secondary fw-bold text-dark">收件人資訊</button>
+      <div class="card bg-dark border-bottom border-secondary text-light">
+        <div class="card-header bg-dark ">
+          <button type="button" class="btn btn-outline-secondary fw-bold text-light">收件人資訊</button>
         </div>
         <div class="card-body">
           <blockquote class="blockquote mb-0">
@@ -52,11 +52,11 @@
                   <form class="row g-3 needs-validation" novalidate>
                     <div class="col-md-4">
                       <label for="validationCustomUsername" class="form-label">姓名 :</label>
-                      <div class="input-group has-validation">
+                      <div class="input-group has-validation ">
                         <span class="input-group-text" id="inputGroupPrepend">
                           <i class="bi bi-person-circle"></i>
                         </span>
-                        <input type="text" class="form-control" id="validationCustom01" required placeholder="請輸入姓名"
+                        <input type="text" class="form-control bg-dark text-light" id="validationCustom01" required placeholder="請輸入姓名"
                           v-model="from.user.name" />
                         <div class="invalid-feedback"><i class="bi bi-x"></i>此欄位為必填寫</div>
                       </div>
@@ -67,7 +67,7 @@
                         <span class="input-group-text" id="inputGroupPrepend">
                           <i class="bi bi-telephone-fill"></i>
                         </span>
-                        <input type="text" class="form-control" id="validationCustom02" required placeholder="請輸入電話"
+                        <input type="text" class="form-control bg-dark text-light" id="validationCustom02" required placeholder="請輸入電話"
                           v-model="from.user.tel" />
                         <div class="invalid-feedback"><i class="bi bi-x"></i>此欄位為必填寫</div>
                       </div>
@@ -78,7 +78,7 @@
                         <span class="input-group-text" id="inputGroupPrepend">
                           <i class="bi bi-envelope-fill"></i>
                         </span>
-                        <input type="text" class="form-control" id="validationCustomUsername"
+                        <input type="text" class="form-control bg-dark text-light" id="validationCustomUsername"
                           aria-describedby="inputGroupPrepend" required placeholder="請輸入Email"
                           v-model="from.user.email" />
                         <div class="invalid-feedback"><i class="bi bi-x"></i>此欄位為必填寫</div>
@@ -90,7 +90,7 @@
                         <span class="input-group-text" id="inputGroupPrepend">
                           <i class="bi bi-house-fill"></i>
                         </span>
-                        <input type="text" class="form-control" id="validationCustom02" required placeholder="請輸入收件地址"
+                        <input type="text" class="form-control bg-dark text-light" id="validationCustom02" required placeholder="請輸入收件地址"
                           v-model="from.user.address" />
                         <div class="invalid-feedback"><i class="bi bi-x"></i>此欄位為必填寫</div>
                       </div>
@@ -101,7 +101,7 @@
                         <span class="input-group-text" id="inputGroupPrepend">
                           <i class="bi bi-chat-left-dots-fill"></i>
                         </span>
-                        <input type="text" class="form-control" id="validationCustom04" placeholder="ex. 須調整錶帶"
+                        <input type="text" class="form-control bg-dark text-light" id="validationCustom04" placeholder="ex. 須調整錶帶"
                           v-model="from.message" />
                       </div>
                     </div>
@@ -145,7 +145,6 @@
       </div>
     </div>
     <UserFoot></UserFoot>
-  </div>
   <UserCartModal ref="CartModal"></UserCartModal>
   <Toast ref="toast" :toastMsg="toastMsg"></Toast>
 </template>
