@@ -1,51 +1,15 @@
 <template>
   <div class="bg-dark">
-    <!-- search and cart -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 d-flex justify-content-center pt-1">
-          <button
-            type="button"
-            class="btn btn-dark"
-            style="border-color: rgb(175, 174, 174); color: rgb(175, 174, 174)"
-          >
-            CS-Amax
-          </button>
-          <button
-            type="button"
-            class="btn btn-dark"
-            style="border-color: rgb(175, 174, 174); color: rgb(175, 174, 174)"
-          >
-            CS-Yasu
-          </button>
-          <button
-            type="button"
-            class="btn btn-dark"
-            style="border-color: rgb(175, 174, 174); color: rgb(175, 174, 174)"
-          >
-            CS-Frady
-          </button>
-        </div>
-        <div class="col-md-6 d-flex justify-content-center pt-1">
-          <input
-            class="form-control w-50"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button
-            class="btn btn-outline-success ms-1"
-            type="submit"
-            @click="CartModal"
-          >
-            <i class="bi bi-cart-fill" style="font-size: 1.2rem"></i> 購物車
-          </button>
-        </div>
-      </div>
+    <div class="cart text-end">
+      <button class="btn btn-warning" type="submit" @click="CartModal">
+        <i class="bi bi-cart-fill">Cart * {{ cartLength }}</i>
+      </button>
     </div>
-
     <!-- products -->
     <div class="container">
+      <div @click="Offcanvas" class="text-light">
+        <i class="bi bi-search"></i> 快速篩選
+      </div>
       <div class="row">
         <div
           class="col-md-6 col-xl-4 py-1"
@@ -57,22 +21,23 @@
               class="card-img-top"
               :style="{
                 backgroundImage: `url(${item.imageUrl})`,
-                height: `300px`,
+                height: `170px`,
                 backgroundPosition: `center`,
                 backgroundRepeat: `no-repeat`,
                 backgroundSize: `contain`,
+                zIndex: 1,
               }"
             ></div>
             <!-- <img :src="item.imageUrl" class="card-img-top h-25" /> -->
             <div class="card-body">
-              <h5 class="card-title text-center">{{ item.title }}</h5>
+              <h6 class="card-title text-center">{{ item.title }}</h6>
               <p class="card-text"></p>
               <ul class="list-group list-group-flush text-center">
                 <li class="list-group-item">
                   <span class="text-decoration-line-through fw-light"
                     >${{ $filters.currency(item.origin_price) }}</span
                   >
-                  <span class="fw-bold fs-3 text-warning"
+                  <span class="fw-bold fs-5 text-warning"
                     >${{ $filters.currency(item.price) }}</span
                   >
                 </li>
@@ -81,7 +46,7 @@
                 <li class="list-group-item">
                   <button
                     type="button"
-                    class="btn btn-secondary"
+                    class="btn btn-secondary btn-sm"
                     @click.prevent="getProduct(item.id)"
                   >
                     查看詳情
@@ -91,12 +56,12 @@
               <div class="text-center">
                 <button
                   type="button"
-                  class="btn btn-outline-warning"
+                  class="btn btn-outline-warning btn-sm"
                   @click="addToCart(item.id)"
                 >
                   <i
                     class="bi bi-cart-check ps-2 h"
-                    style="font-size: 1.3rem; color: rgb(10, 10, 10)"
+                    style="color: rgb(10, 10, 10)"
                   ></i>
                   add to cart
                 </button>
@@ -107,15 +72,20 @@
       </div>
     </div>
     <UserFoot></UserFoot>
-    <UserCartModal ref="UserProductsModal"></UserCartModal>
+    <UserCartModal
+      ref="UserProductsModal"
+      @cartLength="getCartLength"
+    ></UserCartModal>
     <Toast :toastMsg="toastMsg" ref="toast"></Toast>
     <Loading :active="isLoading"></Loading>
+    <RefOffcanvas ref="RefOffcanvas"></RefOffcanvas>
   </div>
 </template>
 <script>
 import UserFoot from "../components/UserFoot.vue";
 import Toast from "../components/Toast.vue";
 import UserCartModal from "../components/UserCartModal.vue";
+import RefOffcanvas from "../components/Offcanvas.vue";
 export default {
   data() {
     return {
@@ -126,14 +96,19 @@ export default {
         load: "",
       },
       itemImage: {},
+      cartLength: "0",
     };
   },
   components: {
     UserCartModal,
     Toast,
     UserFoot,
+    RefOffcanvas,
   },
   methods: {
+    Offcanvas() {
+      this.$refs.RefOffcanvas.show();
+    },
     getProducts() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
       this.isLoading = true;
@@ -155,6 +130,9 @@ export default {
         this.$refs.UserProductsModal.getCart();
       });
     },
+    getCartLength(length) {
+      this.cartLength = length;
+    },
     CartModal() {
       const ProductsModal = this.$refs.UserProductsModal;
       ProductsModal.show();
@@ -165,4 +143,12 @@ export default {
   },
 };
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.cart {
+  position: sticky;
+  width: 100%;
+  top: 50%;
+  padding-right: 5px;
+  z-index: 2;
+}
+</style>

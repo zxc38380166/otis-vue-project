@@ -157,12 +157,13 @@ export default {
   },
   components: { Toast },
   mixins: [modalMixin],
+  emits:['cartLength'],
   methods: {
     getCart() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
       this.$http.get(api).then((res) => {
         this.cart = res.data.data;
-        console.log(this.cart.carts);
+        this.$emit('cartLength',this.cart.carts.length)
       });
     },
     upDataCartQty() {},
