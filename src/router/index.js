@@ -31,25 +31,6 @@ const routes = [
       ],
    },
    {
-      path: '/Base',
-      component: () => import('../views/Baseboard.vue'),
-      children:
-      [
-         {
-            path: 'BaseCart',
-            component: () => import('../views/BaseCart.vue')
-         },
-         {
-            path: 'BaseProducts/:BaseProductsId',
-            component: () => import('../views/BaseProducts.vue')
-         },
-         {
-            path: 'checkout/:orderId',
-            component: () => import('../views/BaseCheckOut.vue')
-         }
-      ]
-   },
-   {
       path: '/UserBoard',
       component:  ()=>import('../views/UserBoard.vue'),
       children:

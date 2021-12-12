@@ -13,11 +13,23 @@
     </a>
     <div class="collapse" id="collapseExample">
       <div class="card card-body bg-dark text-light">
-        <div class="input-group input-group-sm mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-sm">輸入型號 : </span>
-          <input type="text" class="form-control" aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-sm" v-model="search">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm">輸入型號 : </span>
+              <input type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm" v-model="search">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="input-group input-group-sm mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-sm">輸入金額 : </span>
+              <input type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm" v-model="search">
+            </div>
+          </div>
         </div>
+
         <div class="row">
           <div class="col-md-6 ">
             <ul>系列名
@@ -30,10 +42,13 @@
             </ul>
           </div>
           <div class="col-md-6">
-            <ul>價格
-              <li style="list-style-type:none;"><input type="checkbox" :true-value="'0-5'" v-model="PriceValue">0-500000</li>
-              <li style="list-style-type:none;"><input type="checkbox" :true-value="'5-10'" v-model="PriceValue">500000-1000000</li>
-              <li style="list-style-type:none;"><input type="checkbox" :true-value="'10'" v-model="PriceValue">1000000以上</li>
+            <ul>規格
+              <li style="list-style-type:none;"><input type="checkbox" :true-value="'0-5'" v-model="PriceValue">0-500000
+              </li>
+              <li style="list-style-type:none;"><input type="checkbox" :true-value="'5-10'"
+                  v-model="PriceValue">500000-1000000</li>
+              <li style="list-style-type:none;"><input type="checkbox" :true-value="'10'" v-model="PriceValue">1000000以上
+              </li>
             </ul>
           </div>
         </div>
@@ -103,7 +118,7 @@
         cartLength: "0",
         search: "",
         CategoryValue: "",
-        PriceValue:""
+        PriceValue: ""
       };
     },
     components: {

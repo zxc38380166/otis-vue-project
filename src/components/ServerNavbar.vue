@@ -1,7 +1,6 @@
 <template>
    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-         <router-link class="navbar-brand" href="#" to="/Base/BaseCart">切換至用戶端</router-link>
          <router-link class="navbar-brand" href="#" to="/UserBoard/UserProducts">切換至用戶端(work)</router-link>
          <button
             class="navbar-toggler"
