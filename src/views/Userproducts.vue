@@ -1,10 +1,5 @@
 <template>
-  <!-- cart -->
-  <div class="cart text-end">
-    <button class="btn btn-warning" type="submit" @click="CartModal">
-      <i class="bi bi-cart-fill">Cart * {{ cartLength }}</i>
-    </button>
-  </div>
+  <UserCart ref="UserCart"></UserCart>
   <!-- search -->
   <div class="container">
     <a class="text-light" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
@@ -54,8 +49,6 @@
         </div>
       </div>
     </div>
-
-
     <!-- products -->
     <div class="row ">
       <div class="col-md-6 col-xl-4 py-1 " v-for="item in products" :key="item.id">
@@ -96,15 +89,13 @@
     </div>
   </div>
   <UserFoot></UserFoot>
-  <UserCartModal ref="UserProductsModal" @cartLength="getCartLength"></UserCartModal>
   <Toast :toastMsg="toastMsg" ref="toast"></Toast>
   <Loading :active="isLoading"></Loading>
-
 </template>
 <script>
   import UserFoot from "../components/UserFoot.vue";
   import Toast from "../components/Toast.vue";
-  import UserCartModal from "../components/UserCartModal.vue";
+  import UserCart from "../components/UserCart.vue";
   export default {
     data() {
       return {
@@ -114,15 +105,13 @@
         status: {
           load: "",
         },
-        itemImage: {},
-        cartLength: "0",
         search: "",
         CategoryValue: "",
         PriceValue: ""
       };
     },
     components: {
-      UserCartModal,
+      UserCart,
       Toast,
       UserFoot,
     },
@@ -174,15 +163,8 @@
         }).then((res) => {
           this.isLoading = false;
           this.toastMsg = res.data;
-          this.$refs.UserProductsModal.getCart();
+          this.$refs.UserCart.getCart();
         });
-      },
-      getCartLength(length) {
-        this.cartLength = length;
-      },
-      CartModal() {
-        const ProductsModal = this.$refs.UserProductsModal;
-        ProductsModal.show();
       },
     },
     created() {

@@ -1,4 +1,10 @@
 <template>
+  <!-- CartDOM -->
+  <div class="cart text-end">
+    <button class="btn btn-warning" type="button" @click="this.show()">
+      <i class="bi bi-cart-fill">Cart * {{ cart.carts.length }}</i>
+    </button>
+  </div>
   <!-- Modal -->
   <div
     ref="modal"
@@ -31,13 +37,11 @@
                 <div class="row g-0">
                   <div
                     class="col-4"
-                    style="
-                      background-size: contain;
-                      background-repeat: no-repeat;
-                      background-position: center;
-                    "
                     :style="{
                       backgroundImage: `url(${cart.product.imageUrl})`,
+                      backgroundSize: `contain`,
+                      backgroundRepeat: `no-repeat`,
+                      backgroundPosition: `center`,
                     }"
                   ></div>
                   <div class="col-8">
@@ -156,14 +160,17 @@ export default {
     };
   },
   components: { Toast },
+  // watch:{
+  //   cart(){
+  //     this.getCart()
+  //   }
+  // },
   mixins: [modalMixin],
-  emits:['cartLength'],
   methods: {
     getCart() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
       this.$http.get(api).then((res) => {
         this.cart = res.data.data;
-        this.$emit('cartLength',this.cart.carts.length)
       });
     },
     upDataCartQty() {},
@@ -208,6 +215,9 @@ export default {
       this.$router.push("/UserBoard/UserCheckOut");
       this.hide();
     },
+    CartModal() {
+      this.show();
+    },
   },
   created() {
     this.getCart();
@@ -218,5 +228,12 @@ export default {
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   opacity: 1;
+}
+.cart {
+  position: sticky;
+  width: 100%;
+  top: 50%;
+  padding-right: 5px;
+  z-index: 2;
 }
 </style>
