@@ -24,7 +24,7 @@
               <ul class="list-unstyled">
                 <li v-for="(product, i) in item.products" :key="i">
                   {{ product.product.title }} <br />
-                  數量：{{ product.qty }}
+                  數量 : {{ product.qty }}
                   {{ product.product.unit }}
                 </li>
               </ul>

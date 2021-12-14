@@ -108,7 +108,7 @@ import modalMixin from '@/mixins/modalMixin'
 export default {
    data() {
       return {
-         tempOrders: {}
+         tempOrders: {},
       }
    },
    props: {
@@ -116,7 +116,6 @@ export default {
          // type: Object,
          // default() { return {}; },
       }
-
    },
    watch: {
       Order() {

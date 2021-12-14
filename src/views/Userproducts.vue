@@ -16,28 +16,27 @@
                 aria-describedby="inputGroup-sizing-sm" v-model="searchText">
             </div>
           </div>
-
         </div>
-
         <div class="row">
           <div class="col-md-6 ">
             <ul>系列名
-              <li style="list-style-type:none;"><input type="checkbox" :true-value="'CS-Amax'" :false-value="''"
+              <li style="list-style-type:none;"><input type="checkbox" :true-value="'CS-Amax'"
                   v-model="searchCategory">CS-Amax</li>
-              <li style="list-style-type:none;"><input type="checkbox" :true-value="'CS-Yasu'" :false-value="''"
+              <li style="list-style-type:none;"><input type="checkbox" :true-value="'CS-Yasu'"
                   v-model="searchCategory">CS-Yasu</li>
-              <li style="list-style-type:none;"><input type="checkbox" :true-value="'CS-Frady'" :false-value="''"
+              <li style="list-style-type:none;"><input type="checkbox" :true-value="'CS-Frady'"
                   v-model="searchCategory">CS-Frady</li>
+                  
             </ul>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 ">
             <ul>系列名
-              <li style="list-style-type:none;"><input type="checkbox" :true-value="'同'"
-                  v-model="searchDescription">同軸擒縱</li>
               <li style="list-style-type:none;"><input type="checkbox" :true-value="'天文台腕錶'"
                   v-model="searchDescription">天文台腕錶</li>
               <li style="list-style-type:none;"><input type="checkbox" :true-value="'石英腕錶'"
                   v-model="searchDescription">石英腕錶</li>
+              <li style="list-style-type:none;"><input type="checkbox" :true-value="'同軸擒縱'"
+                  v-model="searchDescription">同軸擒縱</li>
             </ul>
           </div>
         </div>
@@ -71,7 +70,7 @@
                     查看詳情
                   </button><br>
                   <button type="button" class="btn btn-outline-warning btn-sm" @click="addToCart(item.id)">
-                    <i class="bi bi-cart-check ps-2 h" style="color: yellow"></i>
+                    <i class="bi bi-cart-check" style="color: yellow; font-size:1.2rem "></i>
                     add to cart
                   </button>
                 </li>
@@ -97,12 +96,9 @@
         productsCopy: [],
         toastMsg: {},
         isLoading: false,
-        status: {
-          load: "",
-        },
         searchText: "",
-        searchDescription:"",
         searchCategory: "",
+        searchDescription: ""
       };
     },
     components: {
@@ -110,63 +106,30 @@
       Toast,
       UserFoot,
     },
-    watch: {
-      searchText() {
-        let productsSearchText = this.products.filter(item => {
-          return item.title.match(this.searchText)
-        })
-        if (this.searchText) {
-          this.products = productsSearchText
-        } else {
-          this.products = this.productsCopy
-          console.log(this.CategoryValue);
+    computed: {
+      products() {
+        if (this.searchCategory == 'CS-Frady') {
+          return this.products.filter(item => {
+            return item.category.match(this.searchCategory)
+          })
         }
-      },
-      searchDescription(){
-        let productsSearchDescription = this.products.filter(item => {
-          return item.description.match(this.searchDescription)
-        })
-        if (this.searchDescription) {
-          this.products = productsSearchDescription
-        } else {
-          this.products = this.productsCopy
-          console.log(this.CategoryValue);
+        if (this.searchCategory == 'CS-Yasu') {
+          return this.products.filter(item => {
+            return item.category.match(this.searchCategory)
+          })
         }
-        console.log(productsSearchDescription);
+        if (this.searchCategory == 'CS-Amax') {
+          return this.products.filter(item => {
+            return item.category.match(this.searchCategory)
+          })
+        } else {
+          return this.products.filter(item => {
+            return item.title.match(this.searchText)
+          })
+        }
       }
     },
-    computed: {
-
-      // products() {
-      //   if (this.CategoryValue == 'CS-Frady') {
-      //     return this.products.filter(item => {
-      //       return item.category.match(this.CategoryValue)
-      //     })
-      //   }
-      //   if (this.CategoryValue == 'CS-Yasu') {
-      //     return this.products.filter(item => {
-      //       return item.category.match(this.CategoryValue)
-      //     })
-      //   }
-      //   if (this.CategoryValue == 'CS-Amax') {
-      //     return this.products.filter(item => {
-      //       return item.category.match(this.CategoryValue)
-      //     })
-      //   } else {
-      //     return this.products.filter(item => {
-      //       return item.title.match(this.search)
-      //     })
-      //   }
-      // }
-
-
-    },
     methods: {
-      // mysearch(){
-      //   return this.products.filter( item=>{
-      //       return item.title.match(this.search)
-      //     })
-      // },
       getProducts() {
         const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
         this.isLoading = true;
