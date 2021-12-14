@@ -31,7 +31,11 @@
         }}</span>
         <div class="text-end mt-4">
           <button class="btn btn-lg btn-primary btn-block" type="submit">
-            <div class="spinner-border spinner-border-sm" v-if="isLoad" role="status">
+            <div
+              class="spinner-border spinner-border-sm"
+              v-if="isLoad"
+              role="status"
+            >
               <span class="visually-hidden">Loading...</span>
             </div>
             登入
@@ -47,12 +51,12 @@ import ToastMsg from "../components/Toast.vue";
 export default {
   data() {
     return {
+      toastMsg: {},
       user: {
         username: "",
         password: "",
       },
-      toastMsg: {},
-      isLoad:false,
+      isLoad: false,
     };
   },
   components: {
@@ -63,7 +67,7 @@ export default {
       const api = `${process.env.VUE_APP_API}admin/signin`; // 設置api路徑
       this.isLoad = true;
       this.$http.post(api, this.user).then((res) => {
-         this.isLoad = false;
+        this.isLoad = false;
         // 利用axios將this.user以post方式送到後端
         if (res.data.success) {
           // 判斷res中的success為true則執行

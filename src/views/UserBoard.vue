@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-dark">
+  <div class="bg-dark p-0 m-0">
     <UserNavnar></UserNavnar>
     <UserCarouse></UserCarouse>
     <router-view></router-view>
@@ -18,4 +18,4 @@ export default {
   },
 };
 </script>
-<style></style>
+

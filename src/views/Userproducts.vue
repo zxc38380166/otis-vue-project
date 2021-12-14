@@ -9,36 +9,33 @@
     <div class="collapse" id="collapseExample">
       <div class="card card-body bg-dark text-light">
         <div class="row">
-          <div class="col-md-6">
-            <div class="input-group input-group-sm mb-3">
+          <div class="col-md-8">
+            <div class="input-group input-group-sm mb-3" @click="searchCategory=false">
               <span class="input-group-text" id="inputGroup-sizing-sm">輸入型號 : </span>
-              <input type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-sm" v-model="searchText">
+              <input placeholder="輸入時請區分大小寫" :disabled="searchCategory" type="text" class="form-control"
+                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" v-model="searchText ">
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6 ">
-            <ul>系列名
+        <div>
+          <ul class="row">
+            <div class="col-md-6">系列名 :
               <li style="list-style-type:none;"><input type="checkbox" :true-value="'CS-Amax'"
                   v-model="searchCategory">CS-Amax</li>
               <li style="list-style-type:none;"><input type="checkbox" :true-value="'CS-Yasu'"
                   v-model="searchCategory">CS-Yasu</li>
               <li style="list-style-type:none;"><input type="checkbox" :true-value="'CS-Frady'"
                   v-model="searchCategory">CS-Frady</li>
-                  
-            </ul>
-          </div>
-          <div class="col-md-6 ">
-            <ul>系列名
+            </div>
+            <div class="col-md-6">規格 :
               <li style="list-style-type:none;"><input type="checkbox" :true-value="'天文台腕錶'"
-                  v-model="searchDescription">天文台腕錶</li>
+                  v-model="searchCategory">天文台腕錶</li>
               <li style="list-style-type:none;"><input type="checkbox" :true-value="'石英腕錶'"
-                  v-model="searchDescription">石英腕錶</li>
+                  v-model="searchCategory">石英腕錶</li>
               <li style="list-style-type:none;"><input type="checkbox" :true-value="'同軸擒縱'"
-                  v-model="searchDescription">同軸擒縱</li>
-            </ul>
-          </div>
+                  v-model="searchCategory">同軸擒縱</li>
+            </div>
+          </ul>
         </div>
       </div>
     </div>
@@ -70,8 +67,11 @@
                     查看詳情
                   </button><br>
                   <button type="button" class="btn btn-outline-warning btn-sm" @click="addToCart(item.id)">
+
                     <i class="bi bi-cart-check" style="color: yellow; font-size:1.2rem "></i>
                     add to cart
+                    <div class="spinner-border spinner-border-sm" role="status" v-if="LoadStatus">
+                    </div>
                   </button>
                 </li>
               </ul>
@@ -92,13 +92,14 @@
   export default {
     data() {
       return {
+        toastMsg: {},
         products: [],
         productsCopy: [],
-        toastMsg: {},
         isLoading: false,
+        LoadStatus: false,
         searchText: "",
         searchCategory: "",
-        searchDescription: ""
+        searchDescription: "",
       };
     },
     components: {
@@ -106,8 +107,52 @@
       Toast,
       UserFoot,
     },
+    methods: {
+      getProducts() {
+        const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
+        this.isLoading = true;
+        this.$http.get(api).then((res) => {
+          this.isLoading = false;
+          this.products = res.data.products;
+          this.productsCopy = res.data.products;
+        });
+      },
+      addToCart(id) {
+        const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+        const cart = {
+          product_id: id,
+          qty: 1
+        };
+        this.LoadStatus = true;
+        this.$http.post(api, {
+          data: cart
+        }).then((res) => {
+          this.LoadStatus = false;
+          this.toastMsg = res.data;
+          this.$refs.UserCart.getCart();
+        });
+      },
+    },
+    created() {
+      this.getProducts();
+    },
     computed: {
       products() {
+        if (this.searchCategory == '天文台腕錶') {
+          return this.products.filter(item => {
+            return item.description.match(this.searchCategory)
+          })
+        }
+        if (this.searchCategory == '石英腕錶') {
+          return this.products.filter(item => {
+            return item.description.match(this.searchCategory)
+          })
+        }
+        if (this.searchCategory == '同軸擒縱') {
+          return this.products.filter(item => {
+            return item.description.match(this.searchCategory)
+          })
+        }
         if (this.searchCategory == 'CS-Frady') {
           return this.products.filter(item => {
             return item.category.match(this.searchCategory)
@@ -129,48 +174,5 @@
         }
       }
     },
-    methods: {
-      getProducts() {
-        const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
-        this.isLoading = true;
-        this.$http.get(api).then((res) => {
-          this.isLoading = false;
-          this.products = res.data.products;
-          this.productsCopy = res.data.products;
-          console.log(res);
-        });
-      },
-      getProduct(id) {
-        console.log(id);
-      },
-      addToCart(id) {
-        const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
-        const cart = {
-          product_id: id,
-          qty: 1
-        };
-        this.isLoading = true;
-        this.$http.post(api, {
-          data: cart
-        }).then((res) => {
-          this.isLoading = false;
-          this.toastMsg = res.data;
-          this.$refs.UserCart.getCart();
-        });
-      },
-    },
-    created() {
-      this.getProducts();
-
-    },
   };
 </script>
-<style lang="scss">
-  .cart {
-    position: sticky;
-    width: 100%;
-    top: 50%;
-    padding-right: 5px;
-    z-index: 2;
-  }
-</style>

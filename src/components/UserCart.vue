@@ -117,6 +117,11 @@
           </div>
         </div>
         <div class="modal-footer">
+          <div
+            v-if="LoadStatus"
+            class="spinner-border spinner-border-sm"
+            role="status"
+          ></div>
           <button
             type="button"
             class="btn btn-outline-danger"
@@ -157,14 +162,10 @@ export default {
       toastMsg: "",
       couponCode: "",
       disabled: false,
+      LoadStatus: false,
     };
   },
   components: { Toast },
-  // watch:{
-  //   cart(){
-  //     this.getCart()
-  //   }
-  // },
   mixins: [modalMixin],
   methods: {
     getCart() {
@@ -173,15 +174,19 @@ export default {
         this.cart = res.data.data;
       });
     },
-    upDataCartQty() {},
     upDataCart(cart) {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${cart.id}`;
       if (cart.qty > 10) {
         cart.qty = 10;
       }
-      const data = { product_id: cart.id, qty: cart.qty };
+      const data = {
+        product_id: cart.id,
+        qty: cart.qty,
+      };
+      this.LoadStatus = true;
       this.disabled = true;
       this.$http.put(api, { data: data }).then((res) => {
+        this.LoadStatus = false;
         this.toastMsg = res.data;
         this.getCart();
         this.disabled = false;
@@ -189,24 +194,31 @@ export default {
     },
     delCart(id) {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`;
+      this.LoadStatus = true;
       this.$http.delete(api).then((res) => {
+        this.LoadStatus = false;
         this.toastMsg = res.data;
         this.getCart();
       });
     },
     delCartS() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/carts`;
+      this.LoadStatus = true;
       this.$http.delete(api).then((res) => {
+        this.LoadStatus = false;
         this.toastMsg = res.data;
         this.getCart();
       });
     },
     addCouponCode() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/coupon`;
-      const code = { code: this.couponCode };
+      const code = {
+        code: this.couponCode,
+      };
       this.textDecoration = "";
+      this.LoadStatus = true;
       this.$http.post(api, { data: code }).then((res) => {
-        console.log(res);
+        this.LoadStatus = false;
         this.toastMsg = res.data;
         this.getCart();
       });

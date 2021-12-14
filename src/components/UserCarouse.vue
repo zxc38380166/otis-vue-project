@@ -1,10 +1,10 @@
 <template>
   <!-- 手機板 -->
-  <div class="bg-dark w-100 min-img d-md-none"></div>
+  <div class="bg-dark w-100 phone-img d-md-none"></div>
   <!-- 輪播檔 -->
   <div
     id="carouselExampleIndicators"
-    class="carousel slide d-none d-md-block"
+    class="carousel slide d-none d-md-block carousel-fade"
     data-bs-ride="carousel"
   >
     <div class="carousel-indicators">
@@ -79,7 +79,7 @@
   width: 100%;
   height: 550px;
 }
-.min-img {
+.phone-img {
   background-image: url("https://images.pexels.com/photos/691640/pexels-photo-691640.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   background-repeat: no-repeat;
   background-size: cover;

@@ -45,7 +45,6 @@
     </table>
   </div>
 
-
   <CouponModal
     ref="CouponModal"
     :coupon="tempCoupon"
@@ -53,7 +52,7 @@
   ></CouponModal>
   <DelModal ref="delModal" @del-item="delCoupon"></DelModal>
   <Loading :active="isLoading"></Loading>
-  <Toast :toastMsg="toastMsg" ref="toast"></Toast>
+  <Toast :toastMsg="toastMsg"></Toast>
 </template>
 <script>
 import Toast from "../components/Toast.vue";
@@ -62,14 +61,15 @@ import DelModal from "@/components/delModal.vue";
 export default {
   data() {
     return {
+      code: "",
+      title: "",
       Coupons: {},
-      tempCoupon: {
-        title: "",
-        is_enabled: 1,
-        percent: 100,
-        code: "",
-      },
+      toastMsg: {},
       isNaw: false,
+      tempCoupon: {
+        percent: 100,
+        is_enabled: 1,
+      },
     };
   },
   components: {

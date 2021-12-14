@@ -81,11 +81,11 @@ export default {
   data() {
     return {
       products: [], // 儲存後端商品
+      toastMsg: {},
       pagination: {}, // 儲存後端商品方法
       tempProducts: {},
       isNaw: false,
       isLoading: false, // 預設為不讀取
-      toastMsg: {},
     };
   },
   components: {

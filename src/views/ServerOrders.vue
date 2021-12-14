@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <th>購買時間</th>
-          <!-- <th>Email</th> -->
+          <th>Email</th>
           <th>購買款項</th>
           <th>應付金額</th>
           <th>是否付款</th>
@@ -19,7 +19,7 @@
                 <li>{{ $filters.date(item.create_at) }}</li>
               </ul>
             </td>
-            <!-- <td>{{ item.user.email }}</td> -->
+            <td>{{ item.user.email }}</td>
             <td>
               <ul class="list-unstyled">
                 <li v-for="(product, i) in item.products" :key="i">
@@ -74,10 +74,10 @@ import Toast from "../components/Toast.vue";
 export default {
   data() {
     return {
-      orders: {},
-      tempOrders: {},
       pagination: "",
+      orders: {},
       toastMsg: {},
+      tempOrders: {},
     };
   },
   components: {
@@ -92,9 +92,9 @@ export default {
       console.log(api);
       this.isLoading = true;
       this.$http.get(api).then((res) => {
-        this.isLoading = false;
         this.orders = res.data.orders;
         this.pagination = res.data.pagination;
+        this.isLoading = false;
         console.log(this.orders);
         console.log(this.pagination);
       });

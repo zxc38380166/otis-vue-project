@@ -11,7 +11,6 @@
       <div class="card-body row " v-if="orderData.id">
         <h5 class="card-title"><button type="button"
             class="btn btn-outline-secondary fw-bold  text-light">配送狀態:配送中</button></h5>
-
         <table class="row ">
           <tbody class="col-md-6 ">
             <tr class="row">
@@ -113,12 +112,17 @@
                       <label>訂閱官方Email優惠通知</label>
                     </div>
                   </div>
+                  <div class="input-group input-group-sm" v-if="payOver">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">訂單編號 :{{orderId}} </span>
+                    <input class="form-control" type="text" aria-label="Disabled input example" disabled readonly>
+                  </div>
                   <div class="col-12 d-flex justify-content-center">
-                    <button class="btn btn-outline-success" type="button" >
+                    <button class="btn btn-outline-success" type="button">
                       <i class="bi bi-cart-fill"></i>
-                      去逛逛
+                      <router-link to="/UserBoard/UserProducts" style="text-decoration:none;" class="text-success">去逛逛
+                      </router-link>
                     </button>
-                    <button class="btn btn-outline-primary" type="submit" ref="Pay">
+                    <button class="btn btn-outline-primary" type="submit" :disabled="payOver">
                       <div v-if="!orderId" @click="CreateOrder">
                         <i class="bi bi-check-circle"></i>
                         確認訂單
@@ -156,15 +160,16 @@
   export default {
     data() {
       return {
+        payOver: false,
+        payStatus: false,
+        LoadStatus: false,
+        search: "",
+        orderId: "",
+        toastMsg: {},
         from: {
           user: {},
           message: "",
         },
-        toastMsg: {},
-        LoadStatus: false,
-        orderId: "",
-        payStatus: false,
-        search: "",
         orderData: {
           id: "",
           user: {
@@ -173,7 +178,8 @@
             tel: "",
             address: ""
           }
-        }
+        },
+
       }
     },
     components: {
@@ -220,7 +226,8 @@
           this.toastMsg = res.data;
           this.payStatus = res.data.success
           this.LoadStatus = false;
-          this.$refs.Pay.disabled = true
+          this.payOver = true
+          console.log(res);
         })
       },
       searchOrder() {
@@ -252,12 +259,3 @@
     },
   }
 </script>
-<style lang="scss">
-  .cart {
-    position: sticky;
-    width: 100%;
-    top: 50%;
-    padding-right: 5px;
-    z-index: 2;
-  }
-</style>

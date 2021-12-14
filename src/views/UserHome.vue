@@ -1,11 +1,12 @@
 <template>
-<UserCart></UserCart>
+  <UserCart></UserCart>
   <div class="container pt-4">
     <div class="row">
       <div class="col-12 text-center w-100">
         <div class="card mb-3 bg-dark border border-secondary text-light">
           <div class="row g-0">
-            <div class="col-md-4 img-left"></div> <!-- 圖片元素 -->
+            <div class="col-md-4 img-left"></div>
+            <!-- 圖片元素 -->
             <div class="col-md-8 align-self-center">
               <div class="card-body">
                 <h3 class="card-title">源自布拉蘇絲</h3>
@@ -18,18 +19,18 @@
                   多年以來，製錶師及能工巧匠不斷跨越技術與理論的雙重藩籬，打造日趨精密繁複的機械裝置及令人耳目一新的設計。
                 </p>
                 <p class="card-text">
-                  <small class="text-muted">Last updated 3 mins ago</small>
+                  <small class="text-muted">僅做為面試作品使用,圖片取自pexels.com</small>
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-12 text-center w-100 ">
+      <div class="col-12 text-center w-100">
         <div class="card mb-3 bg-dark border border-secondary text-light">
           <div class="row g-0">
-            <div class="col-md-8 align-self-center ">
-              <div class="card-body ">
+            <div class="col-md-8 align-self-center">
+              <div class="card-body">
                 <h3 class="card-title">複雜功能製錶重鎮 : 汝拉山谷</h3>
                 <p class="card-text">
                   家鄉汝拉山谷（Vallée de Joux）
@@ -39,11 +40,12 @@
                   時計的開發離不開大自然的啓迪，機械腕錶透過巧妙的機制，呈現天體運行、時間流逝的軌跡。
                 </p>
                 <p class="card-text">
-                  <small class="text-muted">Last updated 3 mins ago</small>
+                  <small class="text-muted">僅做為面試作品使用,圖片取自pexels.com</small>
                 </p>
               </div>
             </div>
-            <div class="col-md-4 img-right"></div>  <!-- 圖片元素 -->
+            <div class="col-md-4 img-right"></div>
+            <!-- 圖片元素 -->
           </div>
         </div>
       </div>
@@ -52,12 +54,14 @@
   <UserFoot></UserFoot>
 </template>
 <script>
-import UserCart from '../components/UserCart.vue'
+import UserCart from "../components/UserCart.vue";
 import UserFoot from "../components/UserFoot.vue";
 export default {
   components: {
-    UserFoot,UserCart
+    UserFoot,
+    UserCart,
   },
+
 };
 </script>
 <style lang="scss">

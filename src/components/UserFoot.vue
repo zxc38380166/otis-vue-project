@@ -44,7 +44,7 @@
       </div>
       <div class="col-12 text-center pt-4">
         <i class="bi bi-watch text-light"
-          >此網頁僅供面試使用,無商業用途,圖片取自於網路</i
+          >此網頁僅做為面試作品使用,圖片取自pexels.com</i
         >
       </div>
     </div>
