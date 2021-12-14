@@ -12,10 +12,6 @@ export default {
   data() {
     return {};
   },
-  components: {
-    UserNavnar,
-    UserCarouse,
-  },
+  components: { UserNavnar, UserCarouse },
 };
 </script>
-

@@ -212,9 +212,7 @@ export default {
     },
     addCouponCode() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/coupon`;
-      const code = {
-        code: this.couponCode,
-      };
+      const code = { code: this.couponCode };
       this.textDecoration = "";
       this.LoadStatus = true;
       this.$http.post(api, { data: code }).then((res) => {

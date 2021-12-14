@@ -89,47 +89,31 @@ export default {
   methods: {
     getOrders(page = 1) {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders/?page=${page}`;
-      console.log(api);
       this.isLoading = true;
       this.$http.get(api).then((res) => {
         this.orders = res.data.orders;
         this.pagination = res.data.pagination;
         this.isLoading = false;
-        console.log(this.orders);
-        console.log(this.pagination);
       });
     },
     openOrderModal(item) {
       const delComponent = this.$refs.orderModal;
       delComponent.show();
-      this.tempOrders = {
-        ...item,
-      };
+      this.tempOrders = { ...item };
     },
     updataOrder(item) {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`;
       console.log(api);
-      const is_paid = {
-        is_paid: item.is_paid,
-      };
-      this.$http
-        .put(api, {
-          data: is_paid,
-        })
-        .then((res) => {
-          this.toastMsg = res.data;
-          console.log(res);
-          this.getOrders(item.current_page);
-          this.$refs.orderModal.hide();
-        });
+      const is_paid = { is_paid: item.is_paid };
+      this.$http.put(api, { data: is_paid }).then((res) => {
+        this.toastMsg = res.data;
+        this.getOrders(item.current_page);
+        this.$refs.orderModal.hide();
+      });
     },
     openDelModal(item) {
       this.$refs.delModal.show();
-      this.tempOrders = {
-        ...item,
-      };
-      console.log(item);
-      console.log(this.tempOrders);
+      this.tempOrders = { ...item };
     },
     delOrder() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${this.tempOrders.id}`;

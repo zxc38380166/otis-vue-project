@@ -137,7 +137,6 @@ export default {
   watch: {
     Order() {
       this.tempOrders = this.Order;
-      console.log(this.tempOrders);
     },
   },
   mixins: [modalMixin],

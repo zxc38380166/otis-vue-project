@@ -88,12 +88,7 @@ export default {
       isLoading: false, // 預設為不讀取
     };
   },
-  components: {
-    ProductsModal,
-    OpenDelModal,
-    Page,
-    Toast,
-  },
+  components: { ProductsModal, OpenDelModal, Page, Toast },
   methods: {
     getproducts(page = 1) {
       // 若沒有使用emit從子元件重入頁碼 , 則預設頁碼為1
@@ -115,9 +110,7 @@ export default {
         this.tempProducts = {};
       } else {
         // 當傳入的是false則為編輯 , 將商品資料以語法糖展開的形式帶入放置商品的tempProducts
-        this.tempProducts = {
-          ...item,
-        };
+        this.tempProducts = { ...item };
       }
       const ProductsModal = this.$refs.ProductsModal;
       ProductsModal.show();
@@ -134,19 +127,14 @@ export default {
         httpMethod = "put";
       }
       // axios 連接方式以中括號帶入,概念是 object[httpMethod] 而 httpMethod 可以使用變數的方式傳入
-      this.$http[httpMethod](api, {
-        data: this.tempProducts,
-      }).then((res) => {
-        // 將 {data:this.tempProducts} 發送給後端
-        this.toastMsg = res.data;
+      this.$http[httpMethod](api, { data: this.tempProducts }).then((res) => {
+        this.toastMsg = res.data; // 將 {data:this.tempProducts} 發送給後端
         this.$refs.ProductsModal.hide();
         this.getproducts();
       });
     },
     openDelModal(item) {
-      this.tempProducts = {
-        ...item,
-      };
+      this.tempProducts = { ...item };
       this.$refs.OpenDelModal.show();
     },
     delProducts() {

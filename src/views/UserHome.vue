@@ -19,7 +19,9 @@
                   多年以來，製錶師及能工巧匠不斷跨越技術與理論的雙重藩籬，打造日趨精密繁複的機械裝置及令人耳目一新的設計。
                 </p>
                 <p class="card-text">
-                  <small class="text-muted">僅做為面試作品使用,圖片取自pexels.com</small>
+                  <small class="text-muted"
+                    >僅做為面試作品使用,圖片取自pexels.com</small
+                  >
                 </p>
               </div>
             </div>
@@ -40,7 +42,9 @@
                   時計的開發離不開大自然的啓迪，機械腕錶透過巧妙的機制，呈現天體運行、時間流逝的軌跡。
                 </p>
                 <p class="card-text">
-                  <small class="text-muted">僅做為面試作品使用,圖片取自pexels.com</small>
+                  <small class="text-muted"
+                    >僅做為面試作品使用,圖片取自pexels.com</small
+                  >
                 </p>
               </div>
             </div>
@@ -57,11 +61,7 @@
 import UserCart from "../components/UserCart.vue";
 import UserFoot from "../components/UserFoot.vue";
 export default {
-  components: {
-    UserFoot,
-    UserCart,
-  },
-
+  components: { UserFoot, UserCart },
 };
 </script>
 <style lang="scss">

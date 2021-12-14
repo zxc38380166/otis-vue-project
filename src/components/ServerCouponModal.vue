@@ -116,7 +116,6 @@ export default {
         .toISOString()
         .split("T");
       this.due_date = dateAndTime[0];
-      console.log([this.due_date]);
     },
     due_date() {
       this.tempCoupon.due_date = Math.floor(new Date(this.due_date) / 1000);

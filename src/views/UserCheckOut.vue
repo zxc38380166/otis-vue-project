@@ -179,14 +179,9 @@
             address: ""
           }
         },
-
       }
     },
-    components: {
-      UserCart,
-      Toast,
-      UserFoot
-    },
+    components: {UserCart,Toast,UserFoot},
     methods: {
       FromVerify() {
         (function () {
@@ -207,9 +202,7 @@
       CreateOrder() {
         this.FromVerify()
         const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`
-        const data = {
-          data: this.from
-        };
+        const data = {data: this.from};
         this.LoadStatus = true;
         this.$http.post(api, data).then((res) => {
           console.log(res);
@@ -227,7 +220,6 @@
           this.payStatus = res.data.success
           this.LoadStatus = false;
           this.payOver = true
-          console.log(res);
         })
       },
       searchOrder() {

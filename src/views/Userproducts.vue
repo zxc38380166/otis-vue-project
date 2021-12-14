@@ -102,11 +102,7 @@
         searchDescription: "",
       };
     },
-    components: {
-      UserCart,
-      Toast,
-      UserFoot,
-    },
+    components: {  UserCart, Toast,UserFoot, },
     methods: {
       getProducts() {
         const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
