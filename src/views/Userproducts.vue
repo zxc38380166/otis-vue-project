@@ -13,37 +13,31 @@
             <div class="input-group input-group-sm mb-3">
               <span class="input-group-text" id="inputGroup-sizing-sm">輸入型號 : </span>
               <input type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-sm" v-model="search">
+                aria-describedby="inputGroup-sizing-sm" v-model="searchText">
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="input-group input-group-sm mb-3">
-              <span class="input-group-text" id="inputGroup-sizing-sm">輸入金額 : </span>
-              <input type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-sm" v-model="search">
-            </div>
-          </div>
+
         </div>
 
         <div class="row">
           <div class="col-md-6 ">
             <ul>系列名
-              <li style="list-style-type:none;"><input type="checkbox" :true-value="'CS-Amax'"
-                  v-model="CategoryValue">CS-Amax</li>
-              <li style="list-style-type:none;"><input type="checkbox" :true-value="'CS-Yasu'"
-                  v-model="CategoryValue">CS-Yasu</li>
-              <li style="list-style-type:none;"><input type="checkbox" :true-value="'CS-Frady'"
-                  v-model="CategoryValue">CS-Frady</li>
+              <li style="list-style-type:none;"><input type="checkbox" :true-value="'CS-Amax'" :false-value="''"
+                  v-model="searchCategory">CS-Amax</li>
+              <li style="list-style-type:none;"><input type="checkbox" :true-value="'CS-Yasu'" :false-value="''"
+                  v-model="searchCategory">CS-Yasu</li>
+              <li style="list-style-type:none;"><input type="checkbox" :true-value="'CS-Frady'" :false-value="''"
+                  v-model="searchCategory">CS-Frady</li>
             </ul>
           </div>
           <div class="col-md-6">
-            <ul>規格
-              <li style="list-style-type:none;"><input type="checkbox" :true-value="'0-5'" v-model="PriceValue">0-500000
-              </li>
-              <li style="list-style-type:none;"><input type="checkbox" :true-value="'5-10'"
-                  v-model="PriceValue">500000-1000000</li>
-              <li style="list-style-type:none;"><input type="checkbox" :true-value="'10'" v-model="PriceValue">1000000以上
-              </li>
+            <ul>系列名
+              <li style="list-style-type:none;"><input type="checkbox" :true-value="'同'"
+                  v-model="searchDescription">同軸擒縱</li>
+              <li style="list-style-type:none;"><input type="checkbox" :true-value="'天文台腕錶'"
+                  v-model="searchDescription">天文台腕錶</li>
+              <li style="list-style-type:none;"><input type="checkbox" :true-value="'石英腕錶'"
+                  v-model="searchDescription">石英腕錶</li>
             </ul>
           </div>
         </div>
@@ -67,7 +61,7 @@
               <ul class="list-group list-group-flush text-center ">
                 <li class="list-group-item bg-dark border-bottom border-secondary text-light">
                   <span class="text-decoration-line-through fw-light">${{ $filters.currency(item.origin_price) }}</span>
-                  <span class="fw-bold fs-5 text-warning">${{ $filters.currency(item.price) }}</span>
+                  <span class="fw-bold fs-5 text-warning">${{  $filters.currency(item.price) }}</span>
                 </li>
                 <li class="list-group-item bg-dark border-bottom border-secondary text-light">{{ item.category }}</li>
                 <li class="list-group-item bg-dark border-bottom border-secondary text-light">{{ item.description }}
@@ -100,14 +94,15 @@
     data() {
       return {
         products: [],
+        productsCopy: [],
         toastMsg: {},
         isLoading: false,
         status: {
           load: "",
         },
-        search: "",
-        CategoryValue: "",
-        PriceValue: ""
+        searchText: "",
+        searchDescription:"",
+        searchCategory: "",
       };
     },
     components: {
@@ -115,36 +110,70 @@
       Toast,
       UserFoot,
     },
-    computed: {
-      products() {
-        if (this.CategoryValue == 'CS-Frady') {
-          return this.products.filter(item => {
-            return item.category.match(this.CategoryValue)
-          })
-        }
-        if (this.CategoryValue == 'CS-Yasu') {
-          return this.products.filter(item => {
-            return item.category.match(this.CategoryValue)
-          })
-        }
-        if (this.CategoryValue == 'CS-Amax') {
-          return this.products.filter(item => {
-            return item.category.match(this.CategoryValue)
-          })
+    watch: {
+      searchText() {
+        let productsSearchText = this.products.filter(item => {
+          return item.title.match(this.searchText)
+        })
+        if (this.searchText) {
+          this.products = productsSearchText
         } else {
-          return this.products.filter(item => {
-            return item.title.match(this.search)
-          })
+          this.products = this.productsCopy
+          console.log(this.CategoryValue);
         }
+      },
+      searchDescription(){
+        let productsSearchDescription = this.products.filter(item => {
+          return item.description.match(this.searchDescription)
+        })
+        if (this.searchDescription) {
+          this.products = productsSearchDescription
+        } else {
+          this.products = this.productsCopy
+          console.log(this.CategoryValue);
+        }
+        console.log(productsSearchDescription);
       }
     },
+    computed: {
+
+      // products() {
+      //   if (this.CategoryValue == 'CS-Frady') {
+      //     return this.products.filter(item => {
+      //       return item.category.match(this.CategoryValue)
+      //     })
+      //   }
+      //   if (this.CategoryValue == 'CS-Yasu') {
+      //     return this.products.filter(item => {
+      //       return item.category.match(this.CategoryValue)
+      //     })
+      //   }
+      //   if (this.CategoryValue == 'CS-Amax') {
+      //     return this.products.filter(item => {
+      //       return item.category.match(this.CategoryValue)
+      //     })
+      //   } else {
+      //     return this.products.filter(item => {
+      //       return item.title.match(this.search)
+      //     })
+      //   }
+      // }
+
+
+    },
     methods: {
+      // mysearch(){
+      //   return this.products.filter( item=>{
+      //       return item.title.match(this.search)
+      //     })
+      // },
       getProducts() {
         const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
         this.isLoading = true;
         this.$http.get(api).then((res) => {
           this.isLoading = false;
           this.products = res.data.products;
+          this.productsCopy = res.data.products;
           console.log(res);
         });
       },
@@ -169,6 +198,7 @@
     },
     created() {
       this.getProducts();
+
     },
   };
 </script>
