@@ -61,7 +61,7 @@
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: 550px;
+  height: 490px;
 }
 .img-2 {
   background-image: url("https://images.pexels.com/photos/23475/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
@@ -69,7 +69,7 @@
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: 550px;
+  height: 490px;
 }
 .img-3 {
   background-image: url("https://images.pexels.com/photos/691640/pexels-photo-691640.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
@@ -77,7 +77,7 @@
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: 550px;
+  height: 490px;
 }
 .phone-img {
   background-image: url("https://images.pexels.com/photos/691640/pexels-photo-691640.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
@@ -85,6 +85,6 @@
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: 350px;
+  height: 230px;
 }
 </style>

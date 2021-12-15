@@ -44,7 +44,6 @@
                     class="bi bi-github px-2"
                     style="font-size: 1.5rem; color: cornflowerblue"
                   ></i>
-                  <small class="text-muted">此頁面僅</small>
                 </p>
                 <button class="btn btn-outline-success mx-1" type="button">
                   <i class="bi bi-currency-dollar"></i>
