@@ -40,7 +40,7 @@
                   class="btn btn-outline-primary btn-sm"
                   @click="openOrderModal(item)"
                 >
-                  編輯
+                  查看訂單狀態
                 </button>
                 <button
                   class="btn btn-outline-danger btn-sm"
@@ -55,7 +55,6 @@
       </tbody>
     </table>
   </div>
-
   <OrderModal
     ref="orderModal"
     :Order="tempOrders"

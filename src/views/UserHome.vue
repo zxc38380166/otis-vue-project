@@ -20,7 +20,7 @@
                 </p>
                 <p class="card-text">
                   <small class="text-muted"
-                    >僅做為面試作品使用,圖片取自pexels.com</small
+                    >Elon-VueWork-Watch,僅做為面試作品使用,圖片取自pexels.com</small
                   >
                 </p>
               </div>
@@ -43,7 +43,7 @@
                 </p>
                 <p class="card-text">
                   <small class="text-muted"
-                    >僅做為面試作品使用,圖片取自pexels.com</small
+                    >Elon-VueWork-Watch,僅做為面試作品使用,圖片取自pexels.com</small
                   >
                 </p>
               </div>

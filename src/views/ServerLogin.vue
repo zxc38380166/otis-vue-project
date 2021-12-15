@@ -44,7 +44,7 @@
       </div>
     </form>
   </div>
-  <ToastMsg :toastMsg="toastMsg" ref="toast"></ToastMsg>
+  <ToastMsg :toastMsg="toastMsg" ></ToastMsg>
 </template>
 <script>
 import ToastMsg from "../components/Toast.vue";

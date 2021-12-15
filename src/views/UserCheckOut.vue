@@ -126,18 +126,18 @@
                       <div v-if="!orderId" @click="CreateOrder">
                         <i class="bi bi-check-circle"></i>
                         確認訂單
-                        <div class="spinner-grow spinner-grow-sm" v-if="LoadStatus"></div>
+                        <div class="spinner-border spinner-border-sm" v-if="LoadStatus"></div>
                       </div>
                       <div v-else @click.prevent="GetPay">
                         <div v-if="!payStatus">
                           <i class="bi bi-currency-dollar"></i>
                           付款
-                          <div class="spinner-grow spinner-grow-sm" v-if="LoadStatus"></div>
+                          <div class="spinner-border spinner-border-sm" v-if="LoadStatus"></div>
                         </div>
                         <div v-else>
                           <i class="bi bi-check-circle-fill"></i>
                           付款完成
-                          <div class="spinner-grow spinner-grow-sm" v-if="LoadStatus"></div>
+                          <div class="spinner-border spinner-border-sm" v-if="LoadStatus"></div>
                         </div>
                       </div>
                     </button>
@@ -151,7 +151,7 @@
     </div>
   </div>
   <UserFoot></UserFoot>
-  <Toast ref="toast" :toastMsg="toastMsg"></Toast>
+  <Toast :toastMsg="toastMsg"></Toast>
 </template>
 <script>
   import UserCart from '../components/UserCart.vue'

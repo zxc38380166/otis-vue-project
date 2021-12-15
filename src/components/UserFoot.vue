@@ -44,9 +44,11 @@
       </div>
       <div class="col-12 text-center pt-4">
         <i class="bi bi-watch text-light"
-          >此網頁僅做為面試作品使用,圖片取自pexels.com</i
+          >Elon-VueWork-Watch此網頁僅做為面試作品使用,圖片取自pexels.com</i
         >
       </div>
+      
+        
     </div>
   </div>
 </template>

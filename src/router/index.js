@@ -43,6 +43,10 @@ const routes = [
         path: "UserCheckOut",
         component: () => import("../views/UserCheckOut.vue"),
       },
+      {
+        path: "UserProductDetails/:Id",   //路徑中加入 : 為動態路由
+        component: () => import("../views/UserProductDetails.vue") 
+      }
     ],
   },
 ];

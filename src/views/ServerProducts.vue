@@ -68,7 +68,7 @@
   ></OpenDelModal>
   <Loading :active="isLoading"></Loading>
   <!-- 讀取元件 :active="isLoading"為狀態false為關閉讀取 true為打開讀取 -->
-  <Toast :toastMsg="toastMsg" ref="toast"></Toast>
+  <Toast :toastMsg="toastMsg" ></Toast>
 </template>
 
 <script>

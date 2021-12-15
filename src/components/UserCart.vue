@@ -122,19 +122,16 @@
             class="spinner-border spinner-border-sm"
             role="status"
           ></div>
+          <button class="btn btn-outline-success" type="button" @click="goShop">
+            <i class="bi bi-cart-fill"></i>
+            去逛逛
+          </button>
           <button
             type="button"
             class="btn btn-outline-danger"
             @click="delCartS"
           >
             清空
-          </button>
-          <button
-            type="button"
-            class="btn btn-outline-secondary"
-            data-bs-dismiss="modal"
-          >
-            關閉
           </button>
           <button
             type="button"
@@ -225,8 +222,9 @@ export default {
       this.$router.push("/UserBoard/UserCheckOut");
       this.hide();
     },
-    CartModal() {
-      this.show();
+    goShop() {
+      this.$router.push("/UserBoard/UserProducts");
+      this.hide();
     },
   },
   created() {

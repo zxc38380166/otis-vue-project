@@ -63,10 +63,10 @@
                 <li class="list-group-item bg-dark border-bottom border-secondary text-light">{{ item.description }}
                 </li>
                 <li class="list-group-item bg-dark">
-                  <button type="button" class="btn btn-secondary btn-sm my-1" @click.prevent="getProduct(item.id)">
+                  <button type="button" class="btn btn-secondary btn-sm my-1" @click="productDetails(item.id)">
                     查看詳情
                   </button><br>
-                  <button type="button" class="btn btn-outline-warning btn-sm" @click="addToCart(item.id)">
+                  <button type="button" class="btn btn-outline-warning btn-sm" @click.prevent="addToCart(item.id)">
 
                     <i class="bi bi-cart-check" style="color: yellow; font-size:1.2rem "></i>
                     add to cart
@@ -82,7 +82,7 @@
     </div>
   </div>
   <UserFoot></UserFoot>
-  <Toast :toastMsg="toastMsg" ref="toast"></Toast>
+  <Toast :toastMsg="toastMsg" ></Toast>
   <Loading :active="isLoading"></Loading>
 </template>
 <script>
@@ -102,7 +102,7 @@
         searchDescription: "",
       };
     },
-    components: {  UserCart, Toast,UserFoot, },
+    components: {  UserCart,Toast,UserFoot, },
     methods: {
       getProducts() {
         const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
@@ -112,6 +112,9 @@
           this.products = res.data.products;
           this.productsCopy = res.data.products;
         });
+      },
+      productDetails(id){
+        this.$router.push(`/UserBoard/UserProductDetails/${id}`)
       },
       addToCart(id) {
         const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
