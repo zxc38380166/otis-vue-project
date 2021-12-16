@@ -55,36 +55,45 @@
   </div>
 </template>
 <style lang="scss">
-.img-1 {
-  background-image: url("https://images.pexels.com/photos/1546333/pexels-photo-1546333.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+@mixin Image-Style($height, $url) {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: 490px;
+  height: $height;
+  background-image: url($url);
+  animation-name: carousel;
+  animation-duration: 4s;
+  @keyframes carousel {
+    0% {
+      opacity: 0;
+    }
+  }
 }
-.img-2 {
-  background-image: url("https://images.pexels.com/photos/23475/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 490px;
-}
-.img-3 {
-  background-image: url("https://images.pexels.com/photos/691640/pexels-photo-691640.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 490px;
+.carousel-inner {
+  .img-1 {
+    @include Image-Style(
+      490px,
+      "https://images.pexels.com/photos/1546333/pexels-photo-1546333.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    );
+  }
+  .img-2 {
+    @include Image-Style(
+      490px,
+      "https://images.pexels.com/photos/23475/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    );
+  }
+  .img-3 {
+    @include Image-Style(
+      490px,
+      "https://images.pexels.com/photos/691640/pexels-photo-691640.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    );
+  }
 }
 .phone-img {
-  background-image: url("https://images.pexels.com/photos/691640/pexels-photo-691640.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 230px;
+  @include Image-Style(
+    230px,
+    "https://images.pexels.com/photos/691640/pexels-photo-691640.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  );
 }
 </style>

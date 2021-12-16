@@ -1,7 +1,7 @@
 <template>
   <UserCart ref="UserCart"></UserCart>
-  <div class="container">
-    <div class="card bg-dark border-bottom border-secondary text-light">
+  <div class="container ">
+    <div class="card bg-dark border-bottom border-secondary text-light  box-shadow">
       <div class="card-header row">
         <div class="col-md-9 d-flex">
           <input class="form-control me-2 w-50" type="search" v-model="search" placeholder="輸入訂單編號" />
@@ -40,8 +40,8 @@
       </div>
     </div>
   </div>
-  <div class="container py-3">
-    <div class="card bg-dark border-bottom border-secondary text-light">
+  <div class="container py-3 ">
+    <div class="card bg-dark border-bottom border-secondary text-light  box-shadow">
       <div class="card-header bg-dark ">
         <button type="button" class="btn btn-outline-secondary fw-bold text-light">收件人資訊</button>
       </div>
@@ -251,3 +251,8 @@
     },
   }
 </script>
+<style lang="scss">
+  .box-shadow{
+    box-shadow: 0px 0px 3px rgb(192, 188, 188);
+  }
+</style>

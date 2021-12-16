@@ -41,8 +41,8 @@
     </div>
     <!-- products -->
     <div class="row ">
-      <div class="col-md-6 col-xl-4 py-1 " v-for="item in products" :key="item.id">
-        <div class="card bg-dark border border-secondary text-light">
+      <div class="col-md-6 col-xl-4 py-1  " v-for="item in products" :key="item.id">
+        <div class="card bg-dark  text-light border border-secondary products">
           <div class="card-img-top" :style="{
                 backgroundImage: `url(${item.imageUrl})`,
                 height: `170px`,
@@ -82,7 +82,7 @@
     </div>
   </div>
   <UserFoot></UserFoot>
-  <Toast :toastMsg="toastMsg" ></Toast>
+  <Toast :toastMsg="toastMsg"></Toast>
   <Loading :active="isLoading"></Loading>
 </template>
 <script>
@@ -102,7 +102,11 @@
         searchDescription: "",
       };
     },
-    components: {  UserCart,Toast,UserFoot, },
+    components: {
+      UserCart,
+      Toast,
+      UserFoot,
+    },
     methods: {
       getProducts() {
         const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
@@ -113,7 +117,7 @@
           this.productsCopy = res.data.products;
         });
       },
-      productDetails(id){
+      productDetails(id) {
         this.$router.push(`/UserBoard/UserProductDetails/${id}`)
       },
       addToCart(id) {
@@ -175,3 +179,15 @@
     },
   };
 </script>
+<style lang="scss">
+  .products:hover {
+    box-shadow: 0px 0px 10px rgb(192, 188, 188);
+    animation-name: products;
+    animation-duration: 0.5s;
+    @keyframes products {
+      0% {
+        box-shadow: 0px 0px 0px rgb(192, 188, 188);
+      }
+    }
+  }
+</style>

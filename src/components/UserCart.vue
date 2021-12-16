@@ -242,6 +242,6 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 100%;
   top: 50%;
   padding-right: 5px;
-  z-index: 2;
+  z-index: 0;
 }
 </style>

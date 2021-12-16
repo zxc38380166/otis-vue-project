@@ -10,7 +10,7 @@
             <div class="col-md-8 align-self-center">
               <div class="card-body">
                 <h3 class="card-title">源自布拉蘇絲</h3>
-                <p class="card-text">
+                <p class="card-text text">
                   當代藝術創作項目｢Audemars Piguet
                   Contemporary｣以兩種方式扶持及委託藝術創作。
                   工作室透過品牌策展團隊與藝術家的對話，讓藝術家能夠利用多種媒材創作尺寸不一的作品，
@@ -34,7 +34,7 @@
             <div class="col-md-8 align-self-center">
               <div class="card-body">
                 <h3 class="card-title">複雜功能製錶重鎮 : 汝拉山谷</h3>
-                <p class="card-text">
+                <p class="card-text text">
                   家鄉汝拉山谷（Vallée de Joux）
                   是瑞士高端製錶重鎮之一，座落於日內瓦以北的侏羅山脈中，
                   道路崎嶇，山勢險峻。汝拉山谷擁有森林、溪水、冰雪、鐵礦石等天然資源，有利於製錶業的發展及興盛。
@@ -65,18 +65,42 @@ export default {
 };
 </script>
 <style lang="scss">
-.img-left {
-  background-image: url("https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+@mixin Image-Style($url) {
+  background-image: url($url);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 400px;
+  box-shadow: 0px 0px 10px 2px rgb(170, 169, 165);
+  animation-name: blink;
+  animation-duration: 4s;
 }
-.img-right {
-  background-image: url("https://images.pexels.com/photos/8839887/pexels-photo-8839887.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 400px;
+.row {
+  .img-left {
+    @include Image-Style(
+      "https://images.pexels.com/photos/3568518/pexels-photo-3568518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    );
+  }
+  .img-right {
+    @include Image-Style(
+      "https://images.pexels.com/photos/8839887/pexels-photo-8839887.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    );
+  }
+}
+@keyframes blink {
+  0% {
+    height: 0px;
+    box-shadow: 0px 0px 50px 2px rgb(170, 169, 165);
+    opacity: 0;
+  }
+}
+.text {
+  animation-name: text;
+  animation-duration: 4s;
+  @keyframes text {
+    0% {
+      opacity: 0;
+    }
+  }
 }
 </style>

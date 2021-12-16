@@ -143,8 +143,3 @@ export default {
   },
 };
 </script>
-<style>
-.aaa {
-  background-size: contain;
-}
-</style>
