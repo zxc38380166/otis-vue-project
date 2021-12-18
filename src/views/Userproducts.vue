@@ -191,21 +191,19 @@
 
   .producsts-Row {
     .products-Image {
-      animation-name: products-Image;
+      cursor: pointer; // 更改鼠標
       animation-duration: 3s;
+      animation-name: products-Image;
       @keyframes products-Image {
         0% {
           opacity: 0;
         }
       }
     }
-
     .products:hover {
-      cursor: pointer; // 更改鼠標
       animation-name: products;
       animation-duration: 0.5s;
       box-shadow: 0px 0px 10px rgb(192, 188, 188);
-
       @keyframes products {
         0% {
           box-shadow: 0px 0px 0px rgb(192, 188, 188);
