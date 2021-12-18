@@ -17,5 +17,5 @@ app.config.globalProperties.$filters = {
 };
 app.use(VueAxios, axios);
 app.use(router);
-app.component("Loading", Loading); // 全域註冊讀取套件
+app.component("Loading", Loading,); // 全域註冊讀取套件
 app.mount("#app");

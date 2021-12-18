@@ -18,6 +18,11 @@
                   遴選出一位尚未躍上國際舞台的新銳藝術家，在一位客座策展人協助下，創作一件規模宏偉的藝術作品。
                   多年以來，製錶師及能工巧匠不斷跨越技術與理論的雙重藩籬，打造日趨精密繁複的機械裝置及令人耳目一新的設計。
                 </p>
+                <router-link to="/UserBoard/UserCheckOut">
+                  <button class="btn btn-warning btn-sm">
+                    <i class="bi bi-bag-check-fill"></i>領取優惠碼
+                  </button>
+                </router-link>
                 <p class="card-text">
                   <small class="text-muted"
                     >Elon-VueWork-Watch,僅做為面試作品使用,圖片取自pexels.com</small
@@ -61,7 +66,10 @@
 import UserCart from "../components/UserCart.vue";
 import UserFoot from "../components/UserFoot.vue";
 export default {
-  components: { UserFoot, UserCart },
+  components: {
+    UserFoot,
+    UserCart,
+  },
 };
 </script>
 <style lang="scss">
@@ -75,6 +83,7 @@ export default {
   background-repeat: no-repeat;
   box-shadow: 0px 0px 10px 2px rgb(170, 169, 165);
 }
+
 .row {
   .img-left {
     @include Image-Style(
@@ -87,6 +96,7 @@ export default {
     );
   }
 }
+
 @keyframes blink {
   0% {
     opacity: 0;
@@ -94,9 +104,11 @@ export default {
     box-shadow: 0px 0px 50px 2px rgb(170, 169, 165);
   }
 }
+
 .text {
   animation-name: text;
   animation-duration: 4s;
+
   @keyframes text {
     0% {
       opacity: 0;

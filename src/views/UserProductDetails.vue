@@ -45,15 +45,14 @@
                     style="font-size: 1.5rem; color: cornflowerblue"
                   ></i>
                 </p>
-                <button class="btn btn-outline-success mx-1" type="button">
-                  <i class="bi bi-currency-dollar"></i>
-                  <router-link
-                    to="/UserBoard/UserProducts"
-                    style="text-decoration: none"
-                    class="text-success"
-                    >Shop
-                  </router-link>
-                </button>
+                <router-link
+                  to="/UserBoard/UserProducts"
+                  style="text-decoration: none"
+                  class="text-success"
+                  ><button class="btn btn-outline-success mx-1" type="button">
+                    <i class="bi bi-currency-dollar"></i>Shop
+                  </button>
+                </router-link>
                 <button
                   type="button"
                   class="btn btn-outline-warning btn-sm mx-1"
