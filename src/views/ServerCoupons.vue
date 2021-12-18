@@ -73,9 +73,9 @@ export default {
     };
   },
   components: {
-    CouponModal,
-    DelModal,
     Toast,
+    DelModal,
+    CouponModal,
   },
   methods: {
     openCouponModal(isNaw, item) {

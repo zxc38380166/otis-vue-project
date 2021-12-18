@@ -66,14 +66,14 @@ export default {
 </script>
 <style lang="scss">
 @mixin Image-Style($url) {
+  height: 400px;
+  animation-name: blink;
+  animation-duration: 4s;
+  background-size: cover;
   background-image: url($url);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  height: 400px;
   box-shadow: 0px 0px 10px 2px rgb(170, 169, 165);
-  animation-name: blink;
-  animation-duration: 4s;
 }
 .row {
   .img-left {
@@ -89,9 +89,9 @@ export default {
 }
 @keyframes blink {
   0% {
+    opacity: 0;
     height: 0px;
     box-shadow: 0px 0px 50px 2px rgb(170, 169, 165);
-    opacity: 0;
   }
 }
 .text {

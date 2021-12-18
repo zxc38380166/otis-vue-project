@@ -238,10 +238,13 @@ input[type="number"]::-webkit-outer-spin-button {
   opacity: 1;
 }
 .cart {
-  position: sticky;
-  width: 100%;
   top: 50%;
-  padding-right: 5px;
   z-index: 0;
+  width: 100%;
+  position: sticky;
+  padding-right: 5px;
+  @media (max-width: 1350px) {
+    z-index: 2;
+  }
 }
 </style>

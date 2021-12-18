@@ -40,10 +40,10 @@
       </div>
     </div>
     <!-- products -->
-    <div class="row ">
+    <div class="row producsts-Row">
       <div class="col-md-6 col-xl-4 py-1  " v-for="item in products" :key="item.id">
         <div class="card bg-dark  text-light border border-secondary products">
-          <div class="card-img-top" :style="{
+          <div class="card-img-top products-Image" @click="productDetails(item.id)" :style="{
                 backgroundImage: `url(${item.imageUrl})`,
                 height: `170px`,
                 backgroundPosition: `center`,
@@ -55,12 +55,12 @@
             <h6 class="card-title text-center">{{ item.title }}</h6>
             <p class="card-text">
               <ul class="list-group list-group-flush text-center ">
-                <li class="list-group-item bg-dark border-bottom border-secondary text-light">
+                <li class="list-group-item bg-dark text-light ">
                   <span class="text-decoration-line-through fw-light">${{ $filters.currency(item.origin_price) }}</span>
                   <span class="fw-bold fs-5 text-warning">${{  $filters.currency(item.price) }}</span>
                 </li>
-                <li class="list-group-item bg-dark border-bottom border-secondary text-light">{{ item.category }}</li>
-                <li class="list-group-item bg-dark border-bottom border-secondary text-light">{{ item.description }}
+                <li class="list-group-item bg-dark text-light ">{{ item.category }}</li>
+                <li class="list-group-item bg-dark text-light ">{{ item.description }}
                 </li>
                 <li class="list-group-item bg-dark">
                   <button type="button" class="btn btn-secondary btn-sm my-1" @click="productDetails(item.id)">
@@ -180,14 +180,43 @@
   };
 </script>
 <style lang="scss">
-  .products:hover {
-    box-shadow: 0px 0px 10px rgb(192, 188, 188);
-    animation-name: products;
-    animation-duration: 0.5s;
-    @keyframes products {
-      0% {
-        box-shadow: 0px 0px 0px rgb(192, 188, 188);
+  @mixin Li-Border($x) {
+    margin: $x;
+    border-bottom-color: rgb(8, 112, 91);
+    transition: margin 1.5s;
+    @media(max-width:1200px) {
+      margin: 0 0;
+    }
+  }
+
+  .producsts-Row {
+    .products-Image {
+      animation-name: products-Image;
+      animation-duration: 3s;
+      @keyframes products-Image {
+        0% {
+          opacity: 0;
+        }
       }
+    }
+
+    .products:hover {
+      cursor: pointer; // 更改鼠標
+      animation-name: products;
+      animation-duration: 0.5s;
+      box-shadow: 0px 0px 10px rgb(192, 188, 188);
+
+      @keyframes products {
+        0% {
+          box-shadow: 0px 0px 0px rgb(192, 188, 188);
+        }
+      }
+      li {
+        @include Li-Border(0 0px)     // 聚焦時margin-y軸調整為0px
+      }
+    }
+    li {                              // 預設margin-y軸為25px
+      @include Li-Border(0 25px, )
     }
   }
 </style>

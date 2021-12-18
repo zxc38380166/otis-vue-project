@@ -14,7 +14,7 @@
           class="bi bi-shop"
           style="font-size: 1.5rem; color: cornflowerblue"
         ></i>
-        嘉義縣中埔鄉富收村富和路51號
+        xxxxxxxxxxxxxxx
         <br /><i
           class="bi bi-telephone"
           style="font-size: 1.5rem; color: cornflowerblue"
