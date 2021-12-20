@@ -76,7 +76,7 @@ export default {
 @mixin Image-Style($url) {
   height: 400px;
   animation-name: blink;
-  animation-duration: 4s;
+  animation-duration: 2s;
   background-size: cover;
   background-image: url($url);
   background-position: center;
@@ -107,7 +107,7 @@ export default {
 
 .text {
   animation-name: text;
-  animation-duration: 4s;
+  animation-duration: 2s;
 
   @keyframes text {
     0% {

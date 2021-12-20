@@ -252,17 +252,17 @@
           this.payOver = true
         })
       },
-      CopyCoupnCode() {
-        const clipboard = new Clipboard('.coupon-Button');
-        clipboard.on('success', () => {
-          alert('優惠碼複製成功,趕快選一隻喜歡的手錶吧')
-          clipboard.destroy() // destroy() 為釋放暫存
-        })
-        clipboard.on('error', () => {
-          alert('此瀏覽器不支援複製,請手動複製')
-          clipboard.destroy()
-        })
-      },
+      // CopyCoupnCode() {
+      //   const clipboard = new Clipboard('.coupon-Button');
+      //   clipboard.on('success', () => {
+      //     alert('優惠碼複製成功,趕快選一隻喜歡的手錶吧')
+      //     clipboard.destroy() // destroy() 為釋放暫存
+      //   })
+      //   clipboard.on('error', () => {
+      //     alert('此瀏覽器不支援複製,請手動複製')
+      //     clipboard.destroy()
+      //   })
+      // },
       searchOrder() {
         const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order/${this.search}`
         this.$http.get(api).then((res) => {

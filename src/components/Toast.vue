@@ -23,7 +23,7 @@
             <span class="visually-hidden">Loading...</span>
           </div>
         </strong>
-        <small>11 mins ago</small>
+        <small>1 mins ago</small>
         <button
           type="button"
           class="btn-close"
