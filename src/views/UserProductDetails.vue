@@ -81,7 +81,7 @@
             <blockquote class="blockquote mb-0">
               <p>{{ product.content }}</p>
               <footer class="blockquote-footer">
-                <cite title="Source Title">Elon-VueWork-Watch</cite>
+                <cite title="Source Title">Barry-VueWork-Watch</cite>
               </footer>
             </blockquote>
           </div>

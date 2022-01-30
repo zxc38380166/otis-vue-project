@@ -25,7 +25,7 @@
                 </router-link>
                 <p class="card-text">
                   <small class="text-muted"
-                    >Elon-VueWork-Watch,僅做為面試作品使用,圖片取自pexels.com</small
+                    >Barry-VueWork-Watch,僅做為面試作品使用,圖片取自pexels.com</small
                   >
                 </p>
               </div>
@@ -48,7 +48,7 @@
                 </p>
                 <p class="card-text">
                   <small class="text-muted"
-                    >Elon-VueWork-Watch,僅做為面試作品使用,圖片取自pexels.com</small
+                    >Barry-VueWork-Watch,僅做為面試作品使用,圖片取自pexels.com</small
                   >
                 </p>
               </div>
