@@ -53,8 +53,8 @@ export default {
     return {
       toastMsg: {},
       user: {
-        username: "",
-        password: "",
+        username: "zxc38380166@yahoo.com.tw",
+        password: "12345678",
       },
       isLoad: false,
     };
