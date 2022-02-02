@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-5">
-    <form @submit.prevent="signin" class="row justify-content-center">
+    <form class="row justify-content-center">
       <div class="col-md-6">
         <h1 class="h3 mb-3 font-weight-normal">請先登入</h1>
         <div class="mb-2">
@@ -30,7 +30,7 @@
           toastMsg.error.message
         }}</span>
         <div class="text-end mt-4">
-          <button class="btn btn-lg btn-primary btn-block" type="submit">
+          <button class="btn btn-lg btn-primary btn-block" @click.prevent="signin">
             <div
               class="spinner-border spinner-border-sm"
               v-if="isLoad"
