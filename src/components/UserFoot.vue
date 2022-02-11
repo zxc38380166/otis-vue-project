@@ -44,7 +44,7 @@
       </div>
       <div class="col-12 text-center pt-4">
         <i class="bi bi-watch text-light"
-          >Barry-VueWork-Watch此網頁僅做為面試作品使用,圖片取自pexels.com</i
+          >Otis-VueWork-Watch此網頁僅做為面試作品使用,圖片取自pexels.com</i
         >
       </div>
       

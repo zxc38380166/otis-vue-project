@@ -21,7 +21,7 @@
                 </ul>
                 <p class="card-text px-3">
                   <button class="btn btn-outline-warning coupon-Button" @click="CopyCoupnCode"
-                    data-clipboard-text="BarryVueWork">BarryVueWork
+                    data-clipboard-text="OtisVueWork">OtisVueWork
                     <!-- data-clipboard-text 為要複製的值 -->
                     <i class="bi bi-subtract"></i></button>
                 </p>
