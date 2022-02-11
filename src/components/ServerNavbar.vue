@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <router-link class="navbar-brand" href="#" to="/UserBoard/UserHome"
-        >切換至用戶端(work)</router-link
+        >切換至用戶端</router-link
       >
       <button
         class="navbar-toggler"

@@ -12,6 +12,14 @@ export default {
   data() {
     return {};
   },
+  methods: {
+    UserHome(){
+      this.$router.push("/UserBoard/UserHome")
+    }
+  },
+  created() {
+    this.UserHome()
+  },
   components: { UserNavnar, UserCarouse },
 };
 </script>

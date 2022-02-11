@@ -4,7 +4,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark w-75">
       <div class="container-fluid">
         <router-link class="navbar-brand" to="/ServerBoard/ServerProducts"
-          >切換至後台端</router-link
+          >登入</router-link
         >
         <button
           class="navbar-toggler"

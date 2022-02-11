@@ -69,7 +69,7 @@
                   <button type="button" class="btn btn-outline-warning btn-sm" @click.prevent="addToCart(item.id)">
 
                     <i class="bi bi-cart-check" style="color: yellow; font-size:1.2rem "></i>
-                    add to cart
+                    加到購物車
                     <div class="spinner-border spinner-border-sm" role="status" v-if="LoadStatus">
                     </div>
                   </button>
