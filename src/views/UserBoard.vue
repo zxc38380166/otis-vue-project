@@ -3,17 +3,18 @@
     <UserNavnar></UserNavnar>
     <UserCarouse></UserCarouse>
     <router-view></router-view>
-    <Home></Home>
   </div>
 </template>
 <script>
 import UserNavnar from "../components/UserNavbar.vue";
 import UserCarouse from "../components/UserCarouse.vue";
-import Home from "../views/UserHome.vue"
 export default {
   data() {
     return {};
   },
-  components: { UserNavnar, UserCarouse,Home },
+  created(){
+    this.$router.push('/UserBoard/UserHome')
+  },
+  components: { UserNavnar, UserCarouse, },
 };
 </script>
