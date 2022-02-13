@@ -78,7 +78,7 @@
         <div class="row">
           <h5><button type="button" class="btn btn-outline-secondary fw-bold text-light ">收件人資訊</button></h5>
           <div class="col">
-            <form class="row g-3 needs-validation" novalidate>
+            <form class="row g-3 needs-validation"  novalidate>
               <div class="col-md-4">
                 <label for="validationCustomUsername" class="form-label">姓名 :</label>
                 <div class="input-group has-validation ">
@@ -241,6 +241,7 @@
           this.LoadStatus = false;
           this.orderId = res.data.orderId
         })
+        
       },
       GetPay() {
         const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/pay/${this.orderId}`
