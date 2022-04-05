@@ -1,4 +1,5 @@
 <template>
+<UserCarouse></UserCarouse>
   <UserCart ref="UserCart"></UserCart>
   <!-- search -->
   <div class="container">
@@ -42,7 +43,7 @@
     <!-- products -->
     <div class="row producsts-Row">
       <div class="col-md-6 col-xl-4 py-1  " v-for="item in products" :key="item.id">
-        <div class="card bg-dark  text-light border border-secondary products">
+        <div class="card bg-dark  text-light border border-white products">
           <div class="card-img-top products-Image" @click="productDetails(item.id)" :style="{
                 backgroundImage: `url(${item.imageUrl})`,
                 height: `170px`,
@@ -89,6 +90,7 @@
   import UserFoot from "../components/UserFoot.vue";
   import Toast from "../components/Toast.vue";
   import UserCart from "../components/UserCart.vue";
+  import UserCarouse from '../components/UserCarouse.vue'
   export default {
     data() {
       return {
@@ -106,6 +108,7 @@
       UserCart,
       Toast,
       UserFoot,
+      UserCarouse
     },
     methods: {
       getProducts() {
@@ -182,8 +185,8 @@
 <style lang="scss">
   @mixin Li-Border($x) {
     margin: $x;
-    border-bottom-color: rgb(8, 112, 91);
-    transition: margin 1.5s;
+    border-bottom-color: rgb(207, 202, 202);
+    transition: margin 0.5s;
     @media(max-width:1200px) {
       margin: 0 0;
     }
@@ -192,7 +195,7 @@
   .producsts-Row {
     .products-Image {
       cursor: pointer; // 更改鼠標
-      animation-duration: 3s;
+      animation-duration: 0.5s;
       animation-name: products-Image;
       @keyframes products-Image {
         0% {
@@ -203,12 +206,6 @@
     .products:hover {
       animation-name: products;
       animation-duration: 0.5s;
-      box-shadow: 0px 0px 10px rgb(192, 188, 188);
-      @keyframes products {
-        0% {
-          box-shadow: 0px 0px 0px rgb(192, 188, 188);
-        }
-      }
       li {
         @include Li-Border(0 0px)     // 聚焦時margin-y軸調整為0px
       }

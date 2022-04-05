@@ -1,4 +1,5 @@
 <template>
+  <UserCarouse></UserCarouse>
   <UserCart></UserCart>
   <div class="container pt-4">
     <div class="row">
@@ -18,16 +19,7 @@
                   遴選出一位尚未躍上國際舞台的新銳藝術家，在一位客座策展人協助下，創作一件規模宏偉的藝術作品。
                   多年以來，製錶師及能工巧匠不斷跨越技術與理論的雙重藩籬，打造日趨精密繁複的機械裝置及令人耳目一新的設計。
                 </p>
-                <router-link to="/UserBoard/UserCheckOut">
-                  <button class="btn btn-warning btn-sm">
-                    <i class="bi bi-bag-check-fill"></i>領取優惠碼
-                  </button>
-                </router-link>
-                <p class="card-text">
-                  <small class="text-muted"
-                    >Otis-VueWork-Watch,僅做為面試作品使用,圖片取自pexels.com</small
-                  >
-                </p>
+                <p class="card-text"></p>
               </div>
             </div>
           </div>
@@ -46,11 +38,7 @@
                   汝拉山谷未經人工修飾的自然景觀和滿天星斗的夜空，啓發了一代代製錶師的創作靈感。
                   時計的開發離不開大自然的啓迪，機械腕錶透過巧妙的機制，呈現天體運行、時間流逝的軌跡。
                 </p>
-                <p class="card-text">
-                  <small class="text-muted"
-                    >Otis-VueWork-Watch,僅做為面試作品使用,圖片取自pexels.com</small
-                  >
-                </p>
+                <p class="card-text"></p>
               </div>
             </div>
             <div class="col-md-4 img-right"></div>
@@ -60,15 +48,18 @@
       </div>
     </div>
   </div>
+
   <UserFoot></UserFoot>
 </template>
 <script>
 import UserCart from "../components/UserCart.vue";
 import UserFoot from "../components/UserFoot.vue";
+import UserCarouse from "../components/UserCarouse.vue";
 export default {
   components: {
     UserFoot,
     UserCart,
+    UserCarouse,
   },
 };
 </script>
@@ -76,12 +67,11 @@ export default {
 @mixin Image-Style($url) {
   height: 400px;
   animation-name: blink;
-  animation-duration: 2s;
+  animation-duration: 0.5s;
   background-size: cover;
   background-image: url($url);
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: 0px 0px 10px 2px rgb(170, 169, 165);
 }
 
 .row {
@@ -101,13 +91,12 @@ export default {
   0% {
     opacity: 0;
     height: 0px;
-    box-shadow: 0px 0px 50px 2px rgb(170, 169, 165);
   }
 }
 
 .text {
   animation-name: text;
-  animation-duration: 2s;
+  animation-duration: 0.5s;
 
   @keyframes text {
     0% {

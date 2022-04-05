@@ -1,4 +1,5 @@
 <template>
+  <UserCarouse></UserCarouse>
   <UserCart ref="UserCart"></UserCart>
   <!-- 優惠圖 -->
   <div class="container py-4 coupon">
@@ -38,8 +39,8 @@
     <div class=" text-light box-shadow">
       <div class="container">
         <div class="row">
-          <div class="col-md-9 d-flex py-2">
-            <input class="form-control me-2 w-50" type="search" v-model="search" placeholder="輸入訂單編號" />
+          <div class="col-md-9 d-flex pt-3">
+            <input class="form-control mx-1 w-50" type="search" v-model="search" placeholder="輸入訂單編號" />
             <button class="btn btn-outline-success" type="button" @click="searchOrder()">查詢訂單</button>
           </div>
         </div>
@@ -72,104 +73,68 @@
             </tfoot>
           </table>
         </div>
-        <!-- 表單 -->
       </div>
-      <div class="container">
-        <div class="row">
-          <h5><button type="button" class="btn btn-outline-secondary fw-bold text-light ">收件人資訊</button></h5>
-          <div class="col">
-            <form class="row g-3 needs-validation"  novalidate>
-              <div class="col-md-4">
-                <label for="validationCustomUsername" class="form-label">姓名 :</label>
-                <div class="input-group has-validation ">
-                  <span class="input-group-text" id="inputGroupPrepend">
-                    <i class="bi bi-person-circle"></i>
-                  </span>
-                  <input type="text" class="form-control bg-dark text-light" id="validationCustom01" required
-                    placeholder="請輸入姓名" v-model="from.user.name" />
-                  <div class="invalid-feedback"><i class="bi bi-x"></i>此欄位為必填寫</div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <label for="validationCustomUsername" class="form-label">電話 :</label>
-                <div class="input-group has-validation">
-                  <span class="input-group-text" id="inputGroupPrepend">
-                    <i class="bi bi-telephone-fill"></i>
-                  </span>
-                  <input type="text" class="form-control bg-dark text-light" id="validationCustom02" required
-                    placeholder="請輸入電話" v-model="from.user.tel" />
-                  <div class="invalid-feedback"><i class="bi bi-x"></i>此欄位為必填寫</div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <label for="validationCustomUsername" class="form-label">Email :</label>
-                <div class="input-group has-validation">
-                  <span class="input-group-text" id="inputGroupPrepend">
-                    <i class="bi bi-envelope-fill"></i>
-                  </span>
-                  <input type="text" class="form-control bg-dark text-light" id="validationCustomUsername"
-                    aria-describedby="inputGroupPrepend" required placeholder="請輸入Email" v-model="from.user.email" />
-                  <div class="invalid-feedback"><i class="bi bi-x"></i>此欄位為必填寫</div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <label for="validationCustomUsername" class="form-label">地址 :</label>
-                <div class="input-group has-validation">
-                  <span class="input-group-text" id="inputGroupPrepend">
-                    <i class="bi bi-house-fill"></i>
-                  </span>
-                  <input type="text" class="form-control bg-dark text-light" id="validationCustom02" required
-                    placeholder="請輸入收件地址" v-model="from.user.address" />
-                  <div class="invalid-feedback"><i class="bi bi-x"></i>此欄位為必填寫</div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <label for="validationCustomUsername" class="form-label">備註欄 :</label>
-                <div class="input-group has-validation">
-                  <span class="input-group-text" id="inputGroupPrepend">
-                    <i class="bi bi-chat-left-dots-fill"></i>
-                  </span>
-                  <input type="text" class="form-control bg-dark text-light" id="validationCustom04"
-                    placeholder="ex. 須調整錶帶" v-model="from.message" />
-                </div>
-              </div>
-              <div class="col-12 d-flex justify-content-center">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value id="invalidCheck" />
-                  <label>訂閱官方Email優惠通知</label>
-                </div>
-              </div>
-              <div class="col-12" v-if="payOver">
-                <span class="input-group-text text-wrap">訂單編號 : {{orderId}} </span>
-              </div>
-              <div class="col-12 d-flex justify-content-center py-2">
-                <router-link to="/UserBoard/UserProducts" style="text-decoration:none;" class="text-success"> <button
-                    class="btn btn-outline-success" type="button">
-                    <i class="bi bi-cart-fill"></i>去逛逛</button>
-                </router-link>
-                <button class="btn btn-outline-primary" type="submit" :disabled="payOver">
-                  <div v-if="!orderId" @click="CreateOrder">
-                    <i class="bi bi-check-circle"></i>
-                    確認訂單
-                    <div class="spinner-border spinner-border-sm" v-if="LoadStatus"></div>
-                  </div>
-                  <div v-else @click.prevent="GetPay">
-                    <div v-if="!payStatus">
-                      <i class="bi bi-currency-dollar"></i>
-                      付款
-                      <div class="spinner-border spinner-border-sm" v-if="LoadStatus"></div>
-                    </div>
-                    <div v-else>
-                      <i class="bi bi-check-circle-fill"></i>
-                      付款完成
-                      <div class="spinner-border spinner-border-sm" v-if="LoadStatus"></div>
-                    </div>
-                  </div>
-                </button>
-              </div>
-            </form>
+      <!-- 表單 -->
+      <div class="home p-3 ">
+        <Form v-slot="{ errors, validate }">
+          <!-- {{ errors }} {{ values }} -->
+          <div class="mb-3">
+            <i class="bi bi-person-circle" style="margin:5px"></i>
+            <label for="name" class="form-label">姓名</label>
+            <Field id="姓名" name="X 姓名" :class="{ 'is-invalid': errors['X 姓名'] }" class="form-control"
+              v-model="from.user.name" placeholder="請輸入 姓名" rules="required"></Field>
+            <error-message name="X 姓名" class="invalid-feedback px-1"></error-message>
           </div>
+
+          <div class="mb-3">
+            <i class="bi bi-envelope-fill" style="margin:5px"></i>
+            <label for="email" class="form-label">Email</label>
+            <Field id="email" name="X email" type="email" class="form-control"
+              :class="{ 'is-invalid': errors['X email'] }" placeholder="請輸入 Email" rules="email|required"
+              v-model="from.user.email"></Field>
+            <error-message name="X email" class="invalid-feedback px-1"></error-message>
+          </div>
+
+          <div class="mb-3">
+            <i class="bi bi-house-fill" style="margin:5px"></i>
+            <label for="address" class="form-label">地址</label>
+            <Field id="地址" name="X 地址" :class="{ 'is-invalid': errors['X 地址'] }" class="form-control"
+              v-model="from.user.address" placeholder="請輸入 地址" rules="required"></Field>
+            <error-message name="X 地址" class="invalid-feedback px-1"></error-message>
+          </div>
+
+          <div class="mb-3">
+            <i class="bi bi-telephone-fill" style="margin:5px"></i>
+            <label for="addres" class="form-label">連絡電話</label>
+            <Field id="連絡電話" name="X 連絡電話" :class="{ 'is-invalid': errors['X 連絡電話'] }" class="form-control"
+              v-model="from.user.tel" placeholder="請輸入 連絡電話" rules="required"></Field>
+            <error-message name="X 連絡電話" class="invalid-feedback px-1"></error-message>
+          </div>
+
+          <div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic mixed styles example">
+            <div>
+              <button class="btn btn-outline-success " type="button" @click="GotoShop"><i class="bi bi-cart-fill"
+                  style="margin:5px"></i>去逛逛</button>
+            </div>
+            <div>
+              <button class="btn  btn-outline-primary " v-if="!orderId" type="button" @click="validate();CreateOrder()">
+                <i class="bi bi-check-circle" style="margin:5px"></i>確認訂單
+              </button>
+              <button v-else-if="!payOver" @click.prevent="GetPay" class="btn  btn-outline-primary"><i
+                  class="bi bi-currency-dollar" style="margin:5px"></i>付款
+              </button>
+              <button v-else :disabled="payOver" class="btn  btn-outline-primary"><i class="bi bi-check-circle-fill"
+                  style="margin:5px"></i>付款完成
+              </button>
+            </div>
+          </div>
+
+          <!-- <button class="btn btn-primary" type="submit" @click="CreateOrder">Submit</button> -->
+        </Form>
+        <div class="col-12 pt-3" v-if="payOver">
+          <span class="input-group-text text-wrap">訂單編號 : {{orderId}} </span>
         </div>
+        
       </div>
     </div>
   </div>
@@ -181,6 +146,7 @@
   import UserCart from '../components/UserCart.vue'
   import Toast from '../components/Toast.vue'
   import UserFoot from '../components/UserFoot.vue'
+  import UserCarouse from '../components/UserCarouse.vue'
   export default {
     data() {
       return {
@@ -209,26 +175,10 @@
       UserCart,
       Toast,
       UserFoot,
+      UserCarouse
     },
     methods: {
-      FromVerify() {
-        (function () {
-          'use strict'
-          var forms = document.querySelectorAll('.needs-validation')
-          Array.prototype.slice.call(forms)
-            .forEach(function (form) {
-              form.addEventListener('submit', function (event) {
-                if (!form.checkValidity()) {
-                  event.preventDefault()
-                  event.stopPropagation()
-                }
-                form.classList.add('was-validated')
-              }, false)
-            })
-        })()
-      }, 
       CreateOrder() {
-        this.FromVerify()
         const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`
         const data = {
           data: this.from
@@ -241,7 +191,7 @@
           this.LoadStatus = false;
           this.orderId = res.data.orderId
         })
-        
+
       },
       GetPay() {
         const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/pay/${this.orderId}`
@@ -252,6 +202,7 @@
           this.LoadStatus = false;
           this.payOver = true
         })
+
       },
       CopyCoupnCode() {
         const clipboard = new Clipboard('.coupon-Button');
@@ -290,9 +241,12 @@
           this.toastMsg = toastMsg;
         })
       },
+      GotoShop() {
+        this.$router.push("/UserBoard/UserProducts")
+      },
     },
     mounted() {
-      window.scrollTo(0,500)
+      window.scrollTo(0, 500)
     },
   }
 </script>
@@ -301,8 +255,10 @@
     box-shadow: 0px 0px 5px rgb(192, 188, 188);
     border-color: black;
   }
+
   .coupon {
     font-style: italic;
+
     .coupon-Image {
       background-position: center;
       background-size: cover;
@@ -310,17 +266,13 @@
       background-image: url("https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
       height: 320px;
     }
+
     .coupon-Button {
       font-style: italic;
       border-style: dashed;
       animation-duration: 2s;
       animation-name: opacity;
       animation-iteration-count: infinite;
-      @keyframes opacity {
-        0% {
-          opacity: 0;
-        }
-      }
     }
   }
 </style>

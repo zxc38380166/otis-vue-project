@@ -14,7 +14,7 @@
           class="bi bi-shop"
           style="font-size: 1.5rem; color: cornflowerblue"
         ></i>
-        xxxxxxxxxxxxxxx
+        No. 51, Fuhe Rd., Zhongpu Township, Chiayi County
         <br /><i
           class="bi bi-telephone"
           style="font-size: 1.5rem; color: cornflowerblue"
@@ -32,11 +32,11 @@
           class="bi bi-facebook"
           style="font-size: 1.5rem; color: cornflowerblue"
         ></i>
-        xxxxxxxxxxxxxxx <br /><i
+        Otis 精品手錶專賣 <br /><i
           class="bi bi-instagram"
           style="font-size: 1.5rem; color: cornflowerblue"
         ></i>
-        xxxxxxxxxxxxxxx <br /><i
+        Otis_Watch <br /><i
           class="bi bi-github"
           style="font-size: 1.5rem; color: cornflowerblue"
         ></i>

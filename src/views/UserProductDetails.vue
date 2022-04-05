@@ -50,7 +50,7 @@
                   style="text-decoration: none"
                   class="text-success"
                   ><button class="btn btn-outline-success mx-1" type="button">
-                    <i class="bi bi-currency-dollar"></i>Shop
+                    <i class="bi bi-currency-dollar"></i>去購物
                   </button>
                 </router-link>
                 <button
@@ -62,7 +62,7 @@
                     class="bi bi-cart-check"
                     style="color: yellow; font-size: 1.2rem"
                   ></i>
-                  add to cart
+                  加到購物車
                   <div
                     class="spinner-border spinner-border-sm"
                     role="status"
@@ -75,6 +75,31 @@
         </div>
       </div>
       <div class="col-12">
+        <div class="fs-5 text-light">產品規格:</div>
+        <table class="table table-dark table-hover" style="border-style: solid">
+          <thead>
+            <tr class="text-center">
+              <th>顏色</th>
+              <th>尺寸</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-center">
+              <th>經典灰</th>
+              <th>M.L.XL</th>
+            </tr>
+            <tr class="text-center">
+              <th>寶石藍</th>
+              <th>L.XL</th>
+            </tr>
+            <tr class="text-center">
+              <th>玫瑰金</th>
+              <th>M.L</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-12 py-3">
         <div class="bg-dark">
           <div class="header text-light fs-5">詳細說明 :</div>
           <div class="body text-light">
@@ -87,13 +112,28 @@
           </div>
         </div>
       </div>
+      <div class="col-12 text-light fs-5">
+        產品實戴:
+        <div
+          class="image"
+          :style="{
+            backgroundRepeat: `no-repeat`,
+            backgroundSize: `cover`,
+            backgroundPosition: `center`,
+            backgroundImage:`url(${product.unit})`,
+            height:`500px`
+          }"
+        ></div>
+      </div>
     </div>
   </div>
+
   <UserFoot></UserFoot>
   <Toast :toastMsg="toastMsg"></Toast>
   <Loading :active="isLoading"></Loading>
 </template>
 <script>
+import { randomBytes } from "crypto";
 import Toast from "../components/Toast.vue";
 import UserCart from "../components/UserCart.vue";
 import UserFoot from "../components/UserFoot.vue";
@@ -105,6 +145,7 @@ export default {
       toastMsg: {},
       isLoading: false,
       LoadStatus: false,
+      item: [],
     };
   },
   components: { Toast, UserCart, UserFoot },
@@ -115,7 +156,13 @@ export default {
       this.$http.get(api).then((res) => {
         this.isLoading = false;
         this.product = res.data.product;
-        console.log(this.product);
+        // console.log(this.product)
+      });
+    },
+    getProducts() {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
+      this.$http.get(api).then((res) => {
+        console.log(res);
       });
     },
     addToCart(id) {
@@ -139,6 +186,8 @@ export default {
   created() {
     this.Id = this.$route.params.Id; //取得存放在動態路由的Id
     this.getProduct();
+    this.getProducts();
   },
 };
 </script>
+

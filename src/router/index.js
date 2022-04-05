@@ -3,7 +3,7 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: () => import("../views/UserBoard.vue"),
+    component: () => import("../views/UserAbout.vue"),
   },
   {
     path: "/ServerLogin",
@@ -46,6 +46,10 @@ const routes = [
       {
         path: "UserProductDetails/:Id",   //路徑中加入 : 為動態路由
         component: () => import("../views/UserProductDetails.vue") 
+      },
+      {
+        path: "UserFAQ",
+        component: () => import("../views/UserFAQ.vue")
       }
     ],
   },

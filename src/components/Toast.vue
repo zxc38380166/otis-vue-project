@@ -1,5 +1,5 @@
 <template>
-  <div class="position-fixed top-0 start-50 translate-middle-x toast-z-index">
+  <div class="position-fixed top-0 start-50 translate-middle-x toast-z-index ">
     <div
       role="alert"
       aria-live="assertive"

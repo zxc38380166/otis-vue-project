@@ -23,7 +23,13 @@
             <span class="text-primary px-2">{{ cart.carts.length }}</span
             >項
           </span>
+          <div
+            v-if="LoadStatus"
+            class="spinner-border spinner-border-sm ms-4"
+            role="status"
+          ></div>
           <button
+            @click="getCart"
             type="button"
             class="btn-close"
             data-bs-dismiss="modal"
@@ -116,12 +122,9 @@
             </button>
           </div>
         </div>
+
         <div class="modal-footer">
-          <div
-            v-if="LoadStatus"
-            class="spinner-border spinner-border-sm"
-            role="status"
-          ></div>
+          <span v-if="cartHint">目前購物車空空的,趕快去逛逛吧</span>
           <button class="btn btn-outline-success" type="button" @click="goShop">
             <i class="bi bi-cart-fill"></i>
             去逛逛
@@ -156,6 +159,7 @@ export default {
       cart: {
         carts: [],
       },
+      cartHint: false,
       toastMsg: "",
       couponCode: "",
       disabled: false,
@@ -168,6 +172,7 @@ export default {
     getCart() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
       this.$http.get(api).then((res) => {
+        this.cartHint = false;
         this.cart = res.data.data;
       });
     },
@@ -193,6 +198,7 @@ export default {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`;
       this.LoadStatus = true;
       this.$http.delete(api).then((res) => {
+        console.log(res.data);
         this.LoadStatus = false;
         this.toastMsg = res.data;
         this.getCart();
@@ -219,8 +225,13 @@ export default {
       });
     },
     checkOut() {
-      this.$router.push("/UserBoard/UserCheckOut");
-      this.hide();
+      if (this.cart.carts[0]) {
+        console.log(this.cart.carts);
+        this.$router.push("/UserBoard/UserCheckOut");
+        this.hide();
+      } else {
+        this.cartHint = true;
+      }
     },
     goShop() {
       this.$router.push("/UserBoard/UserProducts");
@@ -239,12 +250,12 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .cart {
   top: 50%;
-  z-index: 0;
+  z-index: 9;
   width: 100%;
   position: sticky;
   padding-right: 5px;
   @media (max-width: 1350px) {
-    z-index: 2;
+    z-index: 10;
   }
 }
 </style>
