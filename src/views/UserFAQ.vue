@@ -78,7 +78,7 @@
                 aria-controls="panelsStayOpen-collapsesix"
               >
                 <i class="bi bi-question-octagon pe-2"></i
-                >如何查看購物車？購物車內的商品多久會清空?
+                >請問商品可以寄送到外島或海外嗎?
               </button>
             </h2>
             <div
