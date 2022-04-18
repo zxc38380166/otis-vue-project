@@ -115,6 +115,7 @@
         const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`;
         this.isLoading = true;
         this.$http.get(api).then((res) => {
+          console.log(res);
           this.isLoading = false;
           this.products = res.data.products;
           this.productsCopy = res.data.products;

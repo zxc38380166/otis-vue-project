@@ -90,7 +90,7 @@
                 <tbody v-for="item in tempOrders.products" :key="item.id">
                   <tr>
                     <th>{{ item.product.title }}</th>
-                    <td>{{ item.qty }} / {{ item.product.unit }}</td>
+                    <td>數量 :　{{ item.qty }} </td>
                     <td class="text-end">
                       {{ $filters.currency(item.final_total) }}
                     </td>
